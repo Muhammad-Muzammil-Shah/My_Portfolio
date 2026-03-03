@@ -1264,10 +1264,10 @@ footer {
 /* ─── Back to Top ───────────────────────────────────────────────── */
 .back-to-top {
     position: fixed;
-    right: 28px;
-    bottom: 28px;
-    width: 46px;
-    height: 46px;
+    right: 96px;
+    bottom: 32px;
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
