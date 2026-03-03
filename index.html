@@ -1512,11 +1512,11 @@
         ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
         ctx.closePath();
         ctx.clip();
-        // Draw image (center-crop, shift up to show face)
+        // Draw image (center-crop, perfectly centered)
         const scale = Math.max(size / img.width, size / img.height);
         const w = img.width * scale;
         const h = img.height * scale;
-        ctx.drawImage(img, (size - w) / 2, (size - h) / 2 - h * 0.08, w, h);
+        ctx.drawImage(img, (size - w) / 2, (size - h) / 2, w, h);
         // Set as favicon
         const link = document.querySelector("link[rel='icon']") || document.createElement('link');
         link.rel = 'icon';
