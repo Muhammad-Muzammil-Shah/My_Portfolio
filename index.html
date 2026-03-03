@@ -326,57 +326,7 @@
       transform: none;
     }
 
-    /* API Key setup */
-    .chatbot-apikey-setup {
-      padding: 16px;
-      background: #0e0f1a;
-      border-top: 1px solid rgba(99, 102, 241, 0.1);
-    }
-    .apikey-info {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #94a3b8;
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-    .apikey-info i { color: #f59e0b; }
-    .apikey-input-row {
-      display: flex;
-      gap: 8px;
-    }
-    .apikey-input {
-      flex: 1;
-      background: #1a1b2e;
-      border: 1px solid rgba(99, 102, 241, 0.15);
-      border-radius: 10px;
-      padding: 10px 14px;
-      color: #e2e8f0;
-      font-size: 12px;
-      font-family: monospace;
-      outline: none;
-    }
-    .apikey-input:focus { border-color: #6366f1; }
-    .apikey-save-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      border: none;
-      background: #22c55e;
-      color: #fff;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.2s;
-    }
-    .apikey-save-btn:hover { background: #16a34a; }
-    .apikey-link {
-      display: block;
-      margin-top: 10px;
-      color: #6366f1;
-      font-size: 11px;
-      text-decoration: none;
-    }
-    .apikey-link:hover { text-decoration: underline; }
+
 
     /* Quick suggestion chips */
     .chat-suggestions {
@@ -1526,19 +1476,6 @@
       </div>
     </div>
 
-    <!-- API Key Setup (shown first time) -->
-    <div class="chatbot-apikey-setup" id="apikeySetup" style="display:none">
-      <div class="apikey-info">
-        <i class="fas fa-key"></i>
-        <span>Enter your Groq API key to start chatting</span>
-      </div>
-      <div class="apikey-input-row">
-        <input type="password" id="groqApiKeyInput" placeholder="gsk_xxxxxxxxxxxxxxxx" class="apikey-input">
-        <button onclick="saveGroqKey()" class="apikey-save-btn"><i class="fas fa-check"></i></button>
-      </div>
-      <a href="https://console.groq.com/keys" target="_blank" class="apikey-link">Get free API key from Groq →</a>
-    </div>
-
     <!-- Chat Input -->
     <div class="chatbot-input-area" id="chatInputArea">
       <input type="text" id="chatInput" placeholder="Ask me anything about Muzammil..." autocomplete="off">
@@ -1749,29 +1686,11 @@ RESPONSE RULES:
 8. For interview-style questions, respond confidently as if in an actual interview
 9. You can respond in Urdu/Roman Urdu if the user writes in Urdu, otherwise respond in English`;
 
-    let GROQ_API_KEY = localStorage.getItem('groq_api_key') || '';
     let chatHistory = [];
     let isChatSending = false;
 
     // Initialize chatbot
     function initChatbot() {
-      if (!GROQ_API_KEY) {
-        document.getElementById('apikeySetup').style.display = 'block';
-        document.getElementById('chatInputArea').style.display = 'none';
-      } else {
-        document.getElementById('apikeySetup').style.display = 'none';
-        document.getElementById('chatInputArea').style.display = 'flex';
-        addSuggestionChips();
-      }
-    }
-
-    function saveGroqKey() {
-      const key = document.getElementById('groqApiKeyInput').value.trim();
-      if (!key) return;
-      GROQ_API_KEY = key;
-      localStorage.setItem('groq_api_key', key);
-      document.getElementById('apikeySetup').style.display = 'none';
-      document.getElementById('chatInputArea').style.display = 'flex';
       addSuggestionChips();
     }
 
@@ -1904,20 +1823,14 @@ RESPONSE RULES:
       showTyping();
 
       try {
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        const response = await fetch('api/chat.php', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + GROQ_API_KEY
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
             messages: [
               { role: 'system', content: MUZAMMIL_SYSTEM_PROMPT },
               ...chatHistory.slice(-10)
-            ],
-            temperature: 0.7,
-            max_tokens: 512
+            ]
           })
         });
 
@@ -1925,15 +1838,7 @@ RESPONSE RULES:
 
         if (!response.ok) {
           const errData = await response.json().catch(() => ({}));
-          if (response.status === 401) {
-            localStorage.removeItem('groq_api_key');
-            GROQ_API_KEY = '';
-            appendMessage('bot', '⚠️ API key is invalid. Please enter a valid Groq API key.');
-            document.getElementById('apikeySetup').style.display = 'block';
-            document.getElementById('chatInputArea').style.display = 'none';
-          } else {
-            appendMessage('bot', '⚠️ Error: ' + (errData.error?.message || 'Something went wrong. Please try again.'));
-          }
+          appendMessage('bot', '⚠️ Error: ' + (errData.error?.message || 'Something went wrong. Please try again.'));
           chatHistory.pop();
           return;
         }
