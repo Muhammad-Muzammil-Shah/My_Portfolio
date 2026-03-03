@@ -1263,34 +1263,15 @@ footer {
 
 /* ─── Back to Top ───────────────────────────────────────────────── */
 .back-to-top {
-    position: fixed;
-    right: 96px;
-    bottom: 32px;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent-grd);
-    border-radius: 12px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 999;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all .3s ease;
-    border: none;
+    display: none !important;
 }
 
 .back-to-top.show {
-    opacity: 1;
-    transform: translateY(0);
+    display: none !important;
 }
 
 .back-to-top:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5);
+    display: none !important;
 }
 
 /* ─── Animations ───────────────────────────────────────────────── */

@@ -360,16 +360,25 @@
       .chatbot-window {
         right: 10px;
         left: 10px;
-        bottom: 90px;
+        bottom: 100px;
         width: auto;
-        max-height: 75vh;
+        max-height: 70vh;
       }
       .chatbot-toggle {
-        bottom: 20px;
+        bottom: 80px;
         right: 20px;
-        width: 54px;
-        height: 54px;
+        width: 50px;
+        height: 50px;
         font-size: 20px;
+      }
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+      .chatbot-toggle {
+        bottom: 80px;
+        right: 24px;
+      }
+      .chatbot-window {
+        bottom: 150px;
       }
     }
   </style>
@@ -1440,11 +1449,6 @@
 
   </div><!-- /main-wrapper -->
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
   <!-- ═══════════════════════════════════════
      MUZAMMIL AI CHATBOT
 ═════════════════════════════════════════ -->
@@ -1585,12 +1589,6 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    /* ─── Back to Top ────────────────────────── */
-    const btt = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      btt.classList.toggle('show', window.scrollY > 400);
-    });
 
     /* ─── Project Filter ──────────────────────── */
     function filterProjects(cat, btn) {
