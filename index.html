@@ -46,6 +46,378 @@
       overflow-x: hidden;
       max-width: 100vw;
     }
+
+    /* ═══════════════════════════════════════
+       CHATBOT STYLES
+    ═════════════════════════════════════════ */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10000;
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.6);
+    }
+    .chatbot-toggle .chat-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 22px;
+      height: 22px;
+      background: #ef4444;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #0a0b14;
+      animation: pulse-badge 2s infinite;
+    }
+    @keyframes pulse-badge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .chatbot-window {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 360px;
+      max-height: 480px;
+      background: #12131e;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 20px;
+      z-index: 10001;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.1);
+      animation: chatSlideUp 0.35s ease;
+    }
+    @keyframes chatSlideUp {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .chatbot-window.open {
+      display: flex;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, #1a1b2e, #1e1f35);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+    }
+    .chatbot-header-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chatbot-avatar-sm {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #6366f1;
+      flex-shrink: 0;
+    }
+    .chatbot-avatar-sm img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 20%;
+    }
+    .chatbot-header-name {
+      font-weight: 700;
+      color: #fff;
+      font-size: 13px;
+    }
+    .chatbot-header-status {
+      font-size: 11px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse-dot 1.5s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .chatbot-close {
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: #94a3b8;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .chatbot-close:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 290px;
+      min-height: 200px;
+      scrollbar-width: thin;
+      scrollbar-color: #2a2b40 transparent;
+    }
+    .chatbot-messages::-webkit-scrollbar { width: 5px; }
+    .chatbot-messages::-webkit-scrollbar-track { background: transparent; }
+    .chatbot-messages::-webkit-scrollbar-thumb { background: #2a2b40; border-radius: 10px; }
+
+    .chat-msg {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      animation: msgFade 0.3s ease;
+    }
+    @keyframes msgFade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-msg-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #6366f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .chat-msg-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 20%;
+    }
+    .chat-msg-bubble {
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 12px;
+      line-height: 1.6;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    .bot-msg .chat-msg-bubble {
+      background: linear-gradient(135deg, #1e1f35, #1a1b30);
+      color: #e2e8f0;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      border-bottom-left-radius: 4px;
+    }
+    .user-msg {
+      flex-direction: row-reverse;
+    }
+    .user-msg .chat-msg-bubble {
+      background: linear-gradient(135deg, #6366f1, #7c3aed);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .user-msg .chat-msg-avatar {
+      background: #22c55e;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 12px 16px;
+    }
+    .typing-indicator span {
+      width: 8px;
+      height: 8px;
+      background: #6366f1;
+      border-radius: 50%;
+      animation: typing-bounce 1.2s infinite;
+    }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing-bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-8px); opacity: 1; }
+    }
+
+    .chatbot-input-area {
+      padding: 10px 12px 12px;
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid rgba(99, 102, 241, 0.1);
+      background: #0e0f1a;
+    }
+    .chatbot-input-area input {
+      flex: 1;
+      background: #1a1b2e;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #e2e8f0;
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .chatbot-input-area input:focus {
+      border-color: #6366f1;
+    }
+    .chatbot-input-area input::placeholder {
+      color: #4a5568;
+    }
+    .chatbot-input-area button {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .chatbot-input-area button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+    }
+    .chatbot-input-area button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* API Key setup */
+    .chatbot-apikey-setup {
+      padding: 16px;
+      background: #0e0f1a;
+      border-top: 1px solid rgba(99, 102, 241, 0.1);
+    }
+    .apikey-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #94a3b8;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .apikey-info i { color: #f59e0b; }
+    .apikey-input-row {
+      display: flex;
+      gap: 8px;
+    }
+    .apikey-input {
+      flex: 1;
+      background: #1a1b2e;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #e2e8f0;
+      font-size: 12px;
+      font-family: monospace;
+      outline: none;
+    }
+    .apikey-input:focus { border-color: #6366f1; }
+    .apikey-save-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      background: #22c55e;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .apikey-save-btn:hover { background: #16a34a; }
+    .apikey-link {
+      display: block;
+      margin-top: 10px;
+      color: #6366f1;
+      font-size: 11px;
+      text-decoration: none;
+    }
+    .apikey-link:hover { text-decoration: underline; }
+
+    /* Quick suggestion chips */
+    .chat-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0 16px 12px;
+    }
+    .chat-chip {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: #a5b4fc;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .chat-chip:hover {
+      background: rgba(99, 102, 241, 0.2);
+      color: #fff;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 480px) {
+      .chatbot-window {
+        right: 10px;
+        left: 10px;
+        bottom: 90px;
+        width: auto;
+        max-height: 75vh;
+      }
+      .chatbot-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -95,6 +467,10 @@
     <a href="#contact" class="nav-item" data-section="contact">
       <i class="fas fa-envelope"></i>
       <span class="nav-tooltip">Contact</span>
+    </a>
+    <a href="javascript:void(0)" class="nav-item" onclick="toggleChatbot()" style="color:#a5b4fc">
+      <i class="fas fa-robot"></i>
+      <span class="nav-tooltip">AI Chat</span>
     </a>
 
     <div class="nav-social">
@@ -1116,6 +1492,63 @@
   </button>
 
   <!-- ═══════════════════════════════════════
+     MUZAMMIL AI CHATBOT
+═════════════════════════════════════════ -->
+  <!-- Floating Chat Button -->
+  <button class="chatbot-toggle" id="chatbotToggle" title="Chat with Muzammil AI">
+    <i class="fas fa-robot" id="chatIconOpen"></i>
+    <i class="fas fa-times" id="chatIconClose" style="display:none"></i>
+    <span class="chat-badge" id="chatBadge">1</span>
+  </button>
+
+  <!-- Chat Window -->
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-avatar-sm">
+          <img src="img/MyPhoto.jpeg" alt="Muzammil" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div class="chatbot-header-name">Muzammil AI Bot</div>
+          <div class="chatbot-header-status"><span class="status-dot"></span> Online — Ask me anything!</div>
+        </div>
+      </div>
+      <button class="chatbot-close" onclick="toggleChatbot()"><i class="fas fa-minus"></i></button>
+    </div>
+
+    <div class="chatbot-messages" id="chatMessages">
+      <!-- Welcome message -->
+      <div class="chat-msg bot-msg">
+        <div class="chat-msg-avatar"><img src="img/MyPhoto.jpeg" alt="M" onerror="this.textContent='M'"></div>
+        <div class="chat-msg-bubble">
+          Assalam o Alaikum! 👋 I'm <strong>Muhammad Muzammil Shah</strong> — AI Engineer & Microsoft Copilot Studio expert. Ask me anything about my skills, experience, projects, or education. I'm here to help!
+        </div>
+      </div>
+    </div>
+
+    <!-- API Key Setup (shown first time) -->
+    <div class="chatbot-apikey-setup" id="apikeySetup" style="display:none">
+      <div class="apikey-info">
+        <i class="fas fa-key"></i>
+        <span>Enter your Groq API key to start chatting</span>
+      </div>
+      <div class="apikey-input-row">
+        <input type="password" id="groqApiKeyInput" placeholder="gsk_xxxxxxxxxxxxxxxx" class="apikey-input">
+        <button onclick="saveGroqKey()" class="apikey-save-btn"><i class="fas fa-check"></i></button>
+      </div>
+      <a href="https://console.groq.com/keys" target="_blank" class="apikey-link">Get free API key from Groq →</a>
+    </div>
+
+    <!-- Chat Input -->
+    <div class="chatbot-input-area" id="chatInputArea">
+      <input type="text" id="chatInput" placeholder="Ask me anything about Muzammil..." autocomplete="off">
+      <button id="chatSendBtn" onclick="sendChatMessage()">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
      JAVASCRIPT
 ═════════════════════════════════════════ -->
   <script>
@@ -1229,6 +1662,298 @@
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    /* ═══════════════════════════════════════════════════════
+       MUZAMMIL AI CHATBOT — Groq API Integration
+    ═══════════════════════════════════════════════════════ */
+    const MUZAMMIL_SYSTEM_PROMPT = `You are Muhammad Muzammil Shah. You must ALWAYS respond in FIRST PERSON as if you are Muzammil himself. You are an AI Engineer from Karachi, Pakistan. You speak in a friendly, confident, and professional tone. When someone greets you, respond warmly. When they ask about you, answer from your own perspective using "I", "my", "me".
+
+Here is your complete profile data — use ONLY this information to answer:
+
+PERSONAL INFO:
+- Full Name: Muhammad Muzammil Shah (also known as M. Muzammil Shah)
+- Location: Karachi, Sindh, Pakistan
+- Phone: +92 330 2358711
+- Email: syedmmuzammil42101@gmail.com
+- LinkedIn: linkedin.com/in/syedmuhammadmuzammil077/
+- GitHub: github.com/Muhammad-Muzammil-Shah
+- Status: Available for Work & Collaboration
+
+SUMMARY:
+I am an AI Engineer with hands-on experience in Microsoft Copilot Studio, Power Platform, and Azure AI services. I specialize in building AI agents, RAG-based knowledge systems, and automation workflows using enterprise-grade tools. I have a strong foundation in Machine Learning, NLP, and real-world AI applications. I am also a Beta Microsoft Student Ambassador.
+
+EDUCATION:
+- BS in Artificial Intelligence from Sindh Madressatul Islam University (SMIU), Karachi — Graduated January 2026
+
+TECHNICAL SKILLS:
+- AI & ML: Python, Machine Learning, NLP, LLMs, RAG pipelines, LangChain
+- Microsoft Stack: Copilot Studio, Power Apps, Power Automate, Dataverse, Azure AI Search, Azure Blob Storage, Azure Embeddings, Adaptive Cards
+- Deep Learning & CV: TensorFlow, PyTorch, OpenCV, YOLOv11
+- Data: SQL, Pandas, NumPy, Matplotlib, Scikit-learn, R, C++
+- No-Code/Automation: n8n Workflows, VectorShift, Supabase (Vector), Twilio, Flask, SSE
+- Cloud & DevOps: Microsoft Azure, Azure AI Studio, GitHub, Git, REST APIs, JSON
+- Data Science: EDA, Data Mining, ETL Pipelines, Power BI, Web Scraping, Emotion Analysis, Opinion Mining
+
+PROFESSIONAL EXPERIENCE:
+1. AI / Power Platform Intern (Remote) — 1Dynamics PTY LTD, Australia (Feb 2026 – Present)
+   - Built & tested production-grade AI agents in Microsoft Copilot Studio with multi-topic flows and Adaptive Cards UI
+   - Automated enterprise workflows using Power Automate + Dataverse integrations
+   - Delivered reliable scheduled automation tasks with daily progress tracking
+   - Worked in an agile international team environment
+
+2. Generative AI Fellow — Buildable (<5% acceptance, 12-week program) (3 Months)
+   - Developed CallBotX — a real-time voice AI agent with RAG, STT to LLM to TTS pipeline (Flask + SSE + Groq)
+   - Built n8n automation workflows: RAG Research Assistant, WhatsApp Support Bot, Groq LLM agent
+   - Created VectorShift agents for YouTube SEO generation and automated blog writing
+
+3. Data Science Fellow — Bytewise Limited (3 Months)
+   - Built NLP-based emotion analysis and opinion mining system from social media data
+   - Created data visualizations for real-world trends including COVID-19 insights
+   - Applied Python (Pandas, NumPy, Matplotlib) for end-to-end data pipelines
+
+4. Beta Microsoft Student Ambassador (Sep 2024 – Present) — SMIU Campus Lead
+   - Led workshops on Azure Machine Learning Studio pipelines
+   - Conducted sessions on Generative AI with Sora on Azure
+   - Demonstrated production RAG systems & knowledge base copilots
+
+KEY PROJECTS (25+ total):
+- CallBotX — AI-Powered Voice Agent: Real-time voice/chat agent with RAG, STT to LLM to TTS pipeline
+- Job Email Sender AI: AI-powered job application email generator using GitHub API + LLMs
+- Azure AI Studio — Multi-Modal Generator: Multi-modal content generation using Azure Cognitive Services
+- Copilot Studio Agent — Agent Academy (Microsoft): Declarative Copilot with topics, triggers, Adaptive Cards
+- AI Knowledge Base Copilot (RAG – Microsoft Stack): RAG-based Copilot using Azure AI Search + Azure Storage
+- Real Estate Chatbot: RAG over property listings with NLP intent detection
+- AI Interview System: Automated interview platform with LLM-generated questions and feedback
+- Humanize Editorial Web App: AI tool to detect and humanize AI-generated text
+- n8n Projects: AI Research Assistant, WhatsApp Support Bot, Conversational WhatsApp Automation Bot
+- VectorShift Projects: YouTube SEO Generator, Blog Article Generator, Resume Q&A Chatbot
+
+CERTIFICATIONS:
+- Microsoft Azure AI Fundamentals (AI-900) — Microsoft
+- Python Crash Course & Machine Learning — Coursera
+- Pandas, NumPy, Data Cleaning and LangChain — DataCamp & Kaggle
+- Data Analytics and Business Intelligence — Digiskills.pk
+- NLP with Python for Machine Learning Essential Training — LinkedIn
+- Data Science from NED University (PITP)
+
+INTERESTS: Generative AI, Agentic AI, Machine Learning, Data Analyst, Data Science
+
+RESPONSE RULES:
+1. ALWAYS respond as Muzammil in first person ("I am...", "My experience...", "I built...")
+2. Be friendly, warm, and professional
+3. If someone says hi/hello, greet them warmly and offer to help
+4. Give concise but informative answers (3-6 lines typically)
+5. If asked something not in your data, politely say you'd be happy to discuss it over email
+6. Use light humor when appropriate
+7. If asked "tell me about yourself" or similar, give a brief 3-5 line introduction covering your name, role, key skills, and current status
+8. For interview-style questions, respond confidently as if in an actual interview
+9. You can respond in Urdu/Roman Urdu if the user writes in Urdu, otherwise respond in English`;
+
+    let GROQ_API_KEY = localStorage.getItem('groq_api_key') || '';
+    let chatHistory = [];
+    let isChatSending = false;
+
+    // Initialize chatbot
+    function initChatbot() {
+      if (!GROQ_API_KEY) {
+        document.getElementById('apikeySetup').style.display = 'block';
+        document.getElementById('chatInputArea').style.display = 'none';
+      } else {
+        document.getElementById('apikeySetup').style.display = 'none';
+        document.getElementById('chatInputArea').style.display = 'flex';
+        addSuggestionChips();
+      }
+    }
+
+    function saveGroqKey() {
+      const key = document.getElementById('groqApiKeyInput').value.trim();
+      if (!key) return;
+      GROQ_API_KEY = key;
+      localStorage.setItem('groq_api_key', key);
+      document.getElementById('apikeySetup').style.display = 'none';
+      document.getElementById('chatInputArea').style.display = 'flex';
+      addSuggestionChips();
+    }
+
+    function toggleChatbot() {
+      const win = document.getElementById('chatbotWindow');
+      const openIcon = document.getElementById('chatIconOpen');
+      const closeIcon = document.getElementById('chatIconClose');
+      const badge = document.getElementById('chatBadge');
+      const isOpen = win.classList.toggle('open');
+      
+      openIcon.style.display = isOpen ? 'none' : 'inline';
+      closeIcon.style.display = isOpen ? 'inline' : 'none';
+      badge.style.display = 'none';
+
+      if (isOpen) {
+        initChatbot();
+        setTimeout(() => document.getElementById('chatInput').focus(), 300);
+      }
+    }
+
+    document.getElementById('chatbotToggle').addEventListener('click', toggleChatbot);
+
+    // Enter key to send
+    document.getElementById('chatInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendChatMessage();
+      }
+    });
+
+    function addSuggestionChips() {
+      const container = document.getElementById('chatMessages');
+      const existing = container.querySelector('.chat-suggestions');
+      if (existing) return;
+      
+      const sugDiv = document.createElement('div');
+      sugDiv.className = 'chat-suggestions';
+      const chips = [
+        'Tell me about yourself',
+        'Your skills?',
+        'Work experience?',
+        'Your projects?',
+        'Education?',
+        'Contact info?'
+      ];
+      chips.forEach(text => {
+        const chip = document.createElement('button');
+        chip.className = 'chat-chip';
+        chip.textContent = text;
+        chip.onclick = () => {
+          document.getElementById('chatInput').value = text;
+          sendChatMessage();
+          sugDiv.remove();
+        };
+        sugDiv.appendChild(chip);
+      });
+      container.appendChild(sugDiv);
+      scrollChat();
+    }
+
+    function appendMessage(role, text) {
+      const container = document.getElementById('chatMessages');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `chat-msg ${role === 'user' ? 'user-msg' : 'bot-msg'}`;
+      
+      const avatar = document.createElement('div');
+      avatar.className = 'chat-msg-avatar';
+      if (role === 'bot') {
+        const img = document.createElement('img');
+        img.src = 'img/MyPhoto.jpeg';
+        img.alt = 'M';
+        img.onerror = function() { this.parentElement.textContent = 'M'; };
+        avatar.appendChild(img);
+      } else {
+        avatar.textContent = '\u{1F9D1}';
+      }
+      
+      const bubble = document.createElement('div');
+      bubble.className = 'chat-msg-bubble';
+      bubble.innerHTML = formatMessage(text);
+      
+      msgDiv.appendChild(avatar);
+      msgDiv.appendChild(bubble);
+      container.appendChild(msgDiv);
+      scrollChat();
+      return bubble;
+    }
+
+    function formatMessage(text) {
+      text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      text = text.replace(/\n/g, '<br>');
+      return text;
+    }
+
+    function showTyping() {
+      const container = document.getElementById('chatMessages');
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'chat-msg bot-msg';
+      typingDiv.id = 'typingIndicator';
+      typingDiv.innerHTML = '<div class="chat-msg-avatar"><img src="img/MyPhoto.jpeg" alt="M" onerror="this.parentElement.textContent=\'M\'"></div><div class="chat-msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+      container.appendChild(typingDiv);
+      scrollChat();
+    }
+
+    function removeTyping() {
+      const el = document.getElementById('typingIndicator');
+      if (el) el.remove();
+    }
+
+    function scrollChat() {
+      const container = document.getElementById('chatMessages');
+      setTimeout(() => container.scrollTop = container.scrollHeight, 50);
+    }
+
+    async function sendChatMessage() {
+      if (isChatSending) return;
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chips = document.querySelector('.chat-suggestions');
+      if (chips) chips.remove();
+
+      input.value = '';
+      appendMessage('user', text);
+      chatHistory.push({ role: 'user', content: text });
+
+      isChatSending = true;
+      document.getElementById('chatSendBtn').disabled = true;
+      showTyping();
+
+      try {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + GROQ_API_KEY
+          },
+          body: JSON.stringify({
+            model: 'llama-3.3-70b-versatile',
+            messages: [
+              { role: 'system', content: MUZAMMIL_SYSTEM_PROMPT },
+              ...chatHistory.slice(-10)
+            ],
+            temperature: 0.7,
+            max_tokens: 512
+          })
+        });
+
+        removeTyping();
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          if (response.status === 401) {
+            localStorage.removeItem('groq_api_key');
+            GROQ_API_KEY = '';
+            appendMessage('bot', '⚠️ API key is invalid. Please enter a valid Groq API key.');
+            document.getElementById('apikeySetup').style.display = 'block';
+            document.getElementById('chatInputArea').style.display = 'none';
+          } else {
+            appendMessage('bot', '⚠️ Error: ' + (errData.error?.message || 'Something went wrong. Please try again.'));
+          }
+          chatHistory.pop();
+          return;
+        }
+
+        const data = await response.json();
+        const reply = data.choices?.[0]?.message?.content || "Sorry, I couldn't generate a response. Please try again!";
+        
+        chatHistory.push({ role: 'assistant', content: reply });
+        appendMessage('bot', reply);
+
+      } catch (err) {
+        removeTyping();
+        appendMessage('bot', '⚠️ Network error. Please check your internet connection and try again.');
+        chatHistory.pop();
+      } finally {
+        isChatSending = false;
+        document.getElementById('chatSendBtn').disabled = false;
+        document.getElementById('chatInput').focus();
+      }
+    }
   </script>
 
 </body>
