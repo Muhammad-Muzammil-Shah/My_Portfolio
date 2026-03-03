@@ -19,6 +19,10 @@
     content="AI Engineer specializing in Microsoft Copilot Studio, Power Platform & Azure AI services.">
   <meta property="og:type" content="website">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/image.png">
+  <link rel="apple-touch-icon" href="img/image.png">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1493,6 +1497,33 @@
     window.addEventListener('load', () => {
       const spinner = document.getElementById('spinner');
       setTimeout(() => spinner.classList.add('hide'), 300);
+
+      // Generate round favicon from photo
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const size = 64;
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        // Draw circular clip
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.clip();
+        // Draw image (center-crop, shift up to show face)
+        const scale = Math.max(size / img.width, size / img.height);
+        const w = img.width * scale;
+        const h = img.height * scale;
+        ctx.drawImage(img, (size - w) / 2, (size - h) / 2 - h * 0.08, w, h);
+        // Set as favicon
+        const link = document.querySelector("link[rel='icon']") || document.createElement('link');
+        link.rel = 'icon';
+        link.href = canvas.toDataURL('image/png');
+        document.head.appendChild(link);
+      };
+      img.src = 'img/image.png';
     });
 
     /* ─── Typing Animation ───────────────────── */
