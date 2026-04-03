@@ -265,7 +265,7 @@ img {
 
 /* ─── Section Wrapper ─────────────────────────────────────────── */
 .section {
-    padding: 100px 60px;
+    padding: 100px 30px;
     position: relative;
 }
 
@@ -310,7 +310,7 @@ img {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 0 60px;
+    padding: 0 30px;
     position: relative;
     overflow: hidden;
 }
@@ -1426,7 +1426,7 @@ footer {
     }
 
     #hero {
-        padding: 80px 20px 60px;
+        padding: 60px 20px 60px;
         min-height: auto;
     }
 
