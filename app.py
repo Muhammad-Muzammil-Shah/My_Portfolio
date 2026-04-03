@@ -7,7 +7,7 @@ app = Flask(__name__, static_folder='.', static_url_path='')
 CORS(app)
 
 @app.route('/')
-def index():
+def home():
     return send_from_directory('.', 'index.html')
 
 @app.route('/<path:path>')
