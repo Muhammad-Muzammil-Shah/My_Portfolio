@@ -1854,8 +1854,7 @@ RESPONSE RULES:
       showTyping();
 
       try {
-        const response = await fetch('api/chat.php', {
-          method: 'POST',
+        const response = await fetch('/api/chat', {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             messages: [
