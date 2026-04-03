@@ -58,6 +58,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
+<<<<<<< HEAD
           name: python-app
       
       - name: Login to Azure
@@ -66,6 +67,9 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4924F783F7E44EA4B1E3FAEBF192CD1C }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2EE20439EF1C453C850D566D37D3ED18 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5BB58FD908DB4CAE9B0DF5C032FF57BF }}
+=======
+          name: php-app
+>>>>>>> 23ccab9 (Fix: Update Azure deployment workflow to use Publish Profile and optimize API handling)
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
@@ -73,4 +77,9 @@ jobs:
         with:
           app-name: 'mmuzammilshah'
           slot-name: 'Production'
+<<<<<<< HEAD
+=======
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .
+>>>>>>> 23ccab9 (Fix: Update Azure deployment workflow to use Publish Profile and optimize API handling)
           
