@@ -1855,6 +1855,7 @@ RESPONSE RULES:
 
       try {
         const response = await fetch('/api/chat', {
+          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             messages: [
@@ -1868,6 +1869,7 @@ RESPONSE RULES:
 
         if (!response.ok) {
           const errData = await response.json().catch(() => ({}));
+          console.error('Bot API Error Response:', response.status, errData);
           appendMessage('bot', '⚠️ Error: ' + (errData.error?.message || 'Something went wrong. Please try again.'));
           chatHistory.pop();
           return;
