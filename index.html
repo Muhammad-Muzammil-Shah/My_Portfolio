@@ -20,8 +20,8 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/logo-m-mark.png">
-  <link rel="apple-touch-icon" href="img/logo-m-mark.png">
+  <link rel="icon" type="image/png" href="img/logo-m-mark.webp">
+  <link rel="apple-touch-icon" href="img/logo-m-mark.webp">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -522,7 +522,7 @@
       <div class="hero-img-wrap">
         <div class="hero-img-ring">
           <div class="hero-img-inner">
-            <img src="img/photo-portrait.jpeg" alt="Muhammad Muzammil Shah"
+            <img src="img/photo-portrait.webp" alt="Muhammad Muzammil Shah"
               style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;">
           </div>
         </div>
@@ -1459,7 +1459,7 @@
     <div class="chatbot-header">
       <div class="chatbot-header-info">
         <div class="chatbot-avatar-sm">
-          <img src="img/photo-portrait.jpeg" alt="Muzammil" onerror="this.style.display='none'">
+          <img src="img/photo-portrait.webp" alt="Muzammil" onerror="this.style.display='none'">
         </div>
         <div>
           <div class="chatbot-header-name">Muzammil AI Bot</div>
@@ -1472,7 +1472,7 @@
     <div class="chatbot-messages" id="chatMessages">
       <!-- Welcome message -->
       <div class="chat-msg bot-msg">
-        <div class="chat-msg-avatar"><img src="img/photo-portrait.jpeg" alt="M" onerror="this.textContent='M'"></div>
+        <div class="chat-msg-avatar"><img src="img/photo-portrait.webp" alt="M" onerror="this.textContent='M'"></div>
         <div class="chat-msg-bubble">
           Assalam o Alaikum! I'm <strong>Muhammad Muzammil Shah</strong> — Power Platform Consultant &amp; AI Engineer. Ask me anything about my skills, experience, projects, or education. I'm here to help!
         </div>
@@ -1522,7 +1522,7 @@
         link.href = canvas.toDataURL('image/png');
         document.head.appendChild(link);
       };
-      img.src = 'img/logo-m-mark.png';
+      img.src = 'img/logo-m-mark.webp';
     });
 
     /* ─── Typing Animation ───────────────────── */
@@ -1786,7 +1786,7 @@ RESPONSE RULES:
       avatar.className = 'chat-msg-avatar';
       if (role === 'bot') {
         const img = document.createElement('img');
-        img.src = 'img/photo-portrait.jpeg';
+        img.src = 'img/photo-portrait.webp';
         img.alt = 'M';
         img.onerror = function() { this.parentElement.textContent = 'M'; };
         avatar.appendChild(img);
@@ -1816,7 +1816,7 @@ RESPONSE RULES:
       const typingDiv = document.createElement('div');
       typingDiv.className = 'chat-msg bot-msg';
       typingDiv.id = 'typingIndicator';
-      typingDiv.innerHTML = '<div class="chat-msg-avatar"><img src="img/photo-portrait.jpeg" alt="M" onerror="this.parentElement.textContent=\'M\'"></div><div class="chat-msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+      typingDiv.innerHTML = '<div class="chat-msg-avatar"><img src="img/photo-portrait.webp" alt="M" onerror="this.parentElement.textContent=\'M\'"></div><div class="chat-msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
       container.appendChild(typingDiv);
       scrollChat();
     }
@@ -1836,28 +1836,28 @@ RESPONSE RULES:
     ═══════════════════════════════════════════════════════ */
     const CERT_DATA = [
       // ── Tier 1: Official Microsoft certifications & recognition ──
-      { img: 'img/certificate-microsoft-azure-ai-fundamentals-2024.png', title: 'Microsoft Azure AI Fundamentals', issuer: 'Microsoft', badge: 'AI-900', date: 'June 2024', desc: 'Earned the AI-900 certification, validating expertise in AI workloads, machine learning, computer vision, NLP, and conversational AI on Microsoft Azure.' },
-      { img: 'img/certificate-mlsa-associate-2026.png', title: 'Microsoft Student Ambassador', issuer: 'Microsoft', badge: 'Associate', date: '2026', desc: 'Recognized as a Microsoft Learn Student Ambassador at Associate level for leadership in community building and Microsoft technology advocacy.' },
+      { img: 'img/certificate-microsoft-azure-ai-fundamentals-2024.webp', title: 'Microsoft Azure AI Fundamentals', issuer: 'Microsoft', badge: 'AI-900', date: 'June 2024', desc: 'Earned the AI-900 certification, validating expertise in AI workloads, machine learning, computer vision, NLP, and conversational AI on Microsoft Azure.' },
+      { img: 'img/certificate-mlsa-associate-2026.webp', title: 'Microsoft Student Ambassador', issuer: 'Microsoft', badge: 'Associate', date: '2026', desc: 'Recognized as a Microsoft Learn Student Ambassador at Associate level for leadership in community building and Microsoft technology advocacy.' },
       // ── Tier 2: Competitive fellowships ──
-      { img: 'img/certificate-buildables-fellowship-ai-2025.png', title: 'Generative AI Fellowship', issuer: 'Buildable', badge: '<5% Acceptance', date: 'Aug – Nov 2025', desc: 'Completed the 3-month Buildable Generative AI Fellowship — building real-world LLM, RAG pipeline, and voice AI applications in a highly competitive cohort.' },
-      { img: 'img/certificate-bytewise-fellowship-data-science-2024.png', title: 'Data Science Fellowship', issuer: 'Bytewise Limited', badge: '3 Months', date: 'Jun – Sep 2024', desc: 'Completed the 3-month Bytewise Data Science Fellowship covering Python, NLP, exploratory data analysis, and data-driven storytelling.' },
+      { img: 'img/certificate-buildables-fellowship-ai-2025.webp', title: 'Generative AI Fellowship', issuer: 'Buildable', badge: '<5% Acceptance', date: 'Aug – Nov 2025', desc: 'Completed the 3-month Buildable Generative AI Fellowship — building real-world LLM, RAG pipeline, and voice AI applications in a highly competitive cohort.' },
+      { img: 'img/certificate-bytewise-fellowship-data-science-2024.webp', title: 'Data Science Fellowship', issuer: 'Bytewise Limited', badge: '3 Months', date: 'Jun – Sep 2024', desc: 'Completed the 3-month Bytewise Data Science Fellowship covering Python, NLP, exploratory data analysis, and data-driven storytelling.' },
       // ── Tier 3: Prestigious course certifications ──
-      { img: 'img/certificate-coursera-stanford-ml-specialization-2024.png', title: 'Machine Learning Specialization', issuer: 'Coursera · Stanford University', badge: '', date: 'January 2024', desc: 'Completed the Stanford Machine Learning Specialization by Andrew Ng, covering supervised learning, unsupervised learning, and ML best practices.' },
+      { img: 'img/certificate-coursera-stanford-ml-specialization-2024.webp', title: 'Machine Learning Specialization', issuer: 'Coursera · Stanford University', badge: '', date: 'January 2024', desc: 'Completed the Stanford Machine Learning Specialization by Andrew Ng, covering supervised learning, unsupervised learning, and ML best practices.' },
       // ── Tier 4: Professional certifications (NED/PITP) ──
-      { img: 'img/certificate-pitp-certified-data-scientist-2025.jpg', title: 'Certified Data Scientist', issuer: 'NED University · PITP', badge: 'Cert #26062', date: 'Jan – Mar 2025', desc: 'Earned the PITP Certified Data Scientist credential from NED University, covering statistical analysis, machine learning, and Python-based workflows.' },
-      { img: 'img/certificate-pitp-certified-database-administrator-2025.jpg', title: 'Certified Database Administrator', issuer: 'NED University · PITP', badge: 'Cert #26224', date: 'Jan – Mar 2025', desc: 'Earned the PITP Certified Database Administrator credential from NED University, covering SQL, database design, and administration.' },
+      { img: 'img/certificate-pitp-certified-data-scientist-2025.webp', title: 'Certified Data Scientist', issuer: 'NED University · PITP', badge: 'Cert #26062', date: 'Jan – Mar 2025', desc: 'Earned the PITP Certified Data Scientist credential from NED University, covering statistical analysis, machine learning, and Python-based workflows.' },
+      { img: 'img/certificate-pitp-certified-database-administrator-2025.webp', title: 'Certified Database Administrator', issuer: 'NED University · PITP', badge: 'Cert #26224', date: 'Jan – Mar 2025', desc: 'Earned the PITP Certified Database Administrator credential from NED University, covering SQL, database design, and administration.' },
       // ── Tier 5: Internship completion ──
-      { img: 'img/letter-itsolera-internship-completion-aiml-2024.png', title: 'AI/ML Internship Completion', issuer: 'ITSolera', badge: 'Jun–Sep 2024', date: 'September 2024', desc: 'Successfully completed the ITSolera AI/ML Internship, working on real-world artificial intelligence and machine learning projects.' },
+      { img: 'img/letter-itsolera-internship-completion-aiml-2024.webp', title: 'AI/ML Internship Completion', issuer: 'ITSolera', badge: 'Jun–Sep 2024', date: 'September 2024', desc: 'Successfully completed the ITSolera AI/ML Internship, working on real-world artificial intelligence and machine learning projects.' },
       // ── Tier 6: Online course certificates ──
-      { img: 'img/certificate-digiskills-data-analytics-bi-2024.jpg', title: 'Data Analytics & Business Intelligence', issuer: 'DigiSkills Pakistan', badge: 'DSTP2.0 Batch-08', date: 'October 2024', desc: 'Completed Data Analytics and Business Intelligence training, covering BI tools, data visualization, dashboarding, and analytics pipelines.' },
-      { img: 'img/certificate-linkedinlearning-nlp-with-python-2024.jpg', title: 'NLP with Python for ML', issuer: 'LinkedIn Learning', badge: '', date: 'October 2024', desc: 'Completed NLP with Python for Machine Learning Essential Training — covering text preprocessing, TF-IDF, embeddings, and NLP model building.' },
-      { img: 'img/certificate-google-coursera-crash-course-python-2023.png', title: 'Crash Course on Python', issuer: 'Google · Coursera', badge: '', date: 'December 2023', desc: "Completed Google's Python crash course covering programming fundamentals, data structures, OOP, and automation scripting." },
+      { img: 'img/certificate-digiskills-data-analytics-bi-2024.webp', title: 'Data Analytics & Business Intelligence', issuer: 'DigiSkills Pakistan', badge: 'DSTP2.0 Batch-08', date: 'October 2024', desc: 'Completed Data Analytics and Business Intelligence training, covering BI tools, data visualization, dashboarding, and analytics pipelines.' },
+      { img: 'img/certificate-linkedinlearning-nlp-with-python-2024.webp', title: 'NLP with Python for ML', issuer: 'LinkedIn Learning', badge: '', date: 'October 2024', desc: 'Completed NLP with Python for Machine Learning Essential Training — covering text preprocessing, TF-IDF, embeddings, and NLP model building.' },
+      { img: 'img/certificate-google-coursera-crash-course-python-2023.webp', title: 'Crash Course on Python', issuer: 'Google · Coursera', badge: '', date: 'December 2023', desc: "Completed Google's Python crash course covering programming fundamentals, data structures, OOP, and automation scripting." },
       // ── Tier 7: Internship selections ──
-      { img: 'img/certificate-itsolera-internship-selection-2026.png', title: 'AI & NLP Winter Internship Selection', issuer: 'ITSolera', badge: 'Winter 2026', date: 'Winter 2026', desc: 'Selected for the ITSolera AI & NLP Winter Internship program (2026).' },
-      { img: 'img/certificate-itsolera-internship-selection-2024.png', title: 'AI Internship Selection', issuer: 'ITSolera', badge: 'REF#6102024-521', date: '2024', desc: 'Selected for the ITSolera AI Internship program (2024), recognizing academic excellence and demonstrated AI/ML skills.' },
+      { img: 'img/certificate-itsolera-internship-selection-2026.webp', title: 'AI & NLP Winter Internship Selection', issuer: 'ITSolera', badge: 'Winter 2026', date: 'Winter 2026', desc: 'Selected for the ITSolera AI & NLP Winter Internship program (2026).' },
+      { img: 'img/certificate-itsolera-internship-selection-2024.webp', title: 'AI Internship Selection', issuer: 'ITSolera', badge: 'REF#6102024-521', date: '2024', desc: 'Selected for the ITSolera AI Internship program (2024), recognizing academic excellence and demonstrated AI/ML skills.' },
       // ── Tier 8: Event & volunteer certificates ──
-      { img: 'img/certificate-iccrt2025-volunteer-appreciation.jpg', title: 'ICCRT-2025 Volunteer Appreciation', issuer: 'SMI University', badge: 'ICCRT 2025', date: 'May 2025', desc: 'Received volunteer appreciation at the ICCRT-2025 international conference at SMI University (May 21–22, 2025).' },
-      { img: 'img/certificate-iccrt2025-workshop-participation.jpg', title: 'ICCRT-2025 Workshop Participation', issuer: 'SMI University', badge: 'ICCRT 2025', date: 'May 20, 2025', desc: 'Participated in the ICCRT-2025 workshop "Agility in Research Projects" at SMI University on May 20, 2025.' }
+      { img: 'img/certificate-iccrt2025-volunteer-appreciation.webp', title: 'ICCRT-2025 Volunteer Appreciation', issuer: 'SMI University', badge: 'ICCRT 2025', date: 'May 2025', desc: 'Received volunteer appreciation at the ICCRT-2025 international conference at SMI University (May 21–22, 2025).' },
+      { img: 'img/certificate-iccrt2025-workshop-participation.webp', title: 'ICCRT-2025 Workshop Participation', issuer: 'SMI University', badge: 'ICCRT 2025', date: 'May 20, 2025', desc: 'Participated in the ICCRT-2025 workshop "Agility in Research Projects" at SMI University on May 20, 2025.' }
     ];
 
     const SESSION_DATA = [
