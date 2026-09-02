@@ -31,7 +31,7 @@ def chat():
 
     # Call Groq API
     payload = {
-        'model': 'llama-3.3-70b-versatile',
+        'model': 'openai/gpt-oss-120b',
         'messages': input_data['messages'],
         'temperature': 0.7,
         'max_tokens': 512
