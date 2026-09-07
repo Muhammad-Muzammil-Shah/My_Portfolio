@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#08090f">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F4F7FB">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Muhammad Muzammil Shah — Power Platform Consultant & AI Engineer</title>
   <meta name="description"
     content="Power Platform Consultant and AI Engineer specializing in Microsoft Copilot Studio, Power Automate, Power Apps, Dataverse, Power Pages, Azure Web Services, Azure AI Foundry, and Azure Machine Learning Studio.">
@@ -18,6 +18,8 @@
   <meta property="og:description"
     content="Power Platform Consultant specializing in Microsoft Copilot Studio, Power Automate, Power Apps, Dataverse, Power Pages, Azure Web Services, Azure AI Foundry, and Azure Machine Learning Studio.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mmuzammilshah.azurewebsites.net/img/photo-portrait.webp">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="img/logo-m-mark.webp">
@@ -27,361 +29,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
     rel="stylesheet">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
   <!-- Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
-  <style>
-    /* Mobile touch fixes */
-    * {
-      -webkit-tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-    }
-
-    html,
-    body {
-      overflow-x: hidden;
-      max-width: 100vw;
-    }
-
-    /* ═══════════════════════════════════════
-       CHATBOT STYLES
-    ═════════════════════════════════════════ */
-    .chatbot-toggle {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      border: none;
-      color: #fff;
-      font-size: 22px;
-      cursor: pointer;
-      z-index: 10000;
-      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .chatbot-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.6);
-    }
-    .chatbot-toggle .chat-badge {
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      width: 22px;
-      height: 22px;
-      background: #ef4444;
-      border-radius: 50%;
-      font-size: 11px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid #0a0b14;
-      animation: pulse-badge 2s infinite;
-    }
-    @keyframes pulse-badge {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
-
-    .chatbot-window {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      width: 360px;
-      max-height: 480px;
-      background: #12131e;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      border-radius: 20px;
-      z-index: 10001;
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.1);
-      animation: chatSlideUp 0.35s ease;
-    }
-    @keyframes chatSlideUp {
-      from { opacity: 0; transform: translateY(20px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .chatbot-window.open {
-      display: flex;
-    }
-
-    .chatbot-header {
-      background: linear-gradient(135deg, #1a1b2e, #1e1f35);
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(99, 102, 241, 0.15);
-    }
-    .chatbot-header-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .chatbot-avatar-sm {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid #6366f1;
-      flex-shrink: 0;
-    }
-    .chatbot-avatar-sm img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 20%;
-    }
-    .chatbot-header-name {
-      font-weight: 700;
-      color: #fff;
-      font-size: 13px;
-    }
-    .chatbot-header-status {
-      font-size: 11px;
-      color: #94a3b8;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      background: #22c55e;
-      border-radius: 50%;
-      display: inline-block;
-      animation: pulse-dot 1.5s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .chatbot-close {
-      background: rgba(255, 255, 255, 0.05);
-      border: none;
-      color: #94a3b8;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.2s;
-    }
-    .chatbot-close:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-    }
-
-    .chatbot-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 14px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 290px;
-      min-height: 200px;
-      scrollbar-width: thin;
-      scrollbar-color: #2a2b40 transparent;
-    }
-    .chatbot-messages::-webkit-scrollbar { width: 5px; }
-    .chatbot-messages::-webkit-scrollbar-track { background: transparent; }
-    .chatbot-messages::-webkit-scrollbar-thumb { background: #2a2b40; border-radius: 10px; }
-
-    .chat-msg {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      animation: msgFade 0.3s ease;
-    }
-    @keyframes msgFade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .chat-msg-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: #6366f1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .chat-msg-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 20%;
-    }
-    .chat-msg-bubble {
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: 12px;
-      line-height: 1.6;
-      max-width: 80%;
-      word-wrap: break-word;
-    }
-    .bot-msg .chat-msg-bubble {
-      background: linear-gradient(135deg, #1e1f35, #1a1b30);
-      color: #e2e8f0;
-      border: 1px solid rgba(99, 102, 241, 0.1);
-      border-bottom-left-radius: 4px;
-    }
-    .user-msg {
-      flex-direction: row-reverse;
-    }
-    .user-msg .chat-msg-bubble {
-      background: linear-gradient(135deg, #6366f1, #7c3aed);
-      color: #fff;
-      border-bottom-right-radius: 4px;
-    }
-    .user-msg .chat-msg-avatar {
-      background: #22c55e;
-    }
-
-    .typing-indicator {
-      display: flex;
-      gap: 4px;
-      padding: 12px 16px;
-    }
-    .typing-indicator span {
-      width: 8px;
-      height: 8px;
-      background: #6366f1;
-      border-radius: 50%;
-      animation: typing-bounce 1.2s infinite;
-    }
-    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typing-bounce {
-      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-      30% { transform: translateY(-8px); opacity: 1; }
-    }
-
-    .chatbot-input-area {
-      padding: 10px 12px 12px;
-      display: flex;
-      gap: 8px;
-      border-top: 1px solid rgba(99, 102, 241, 0.1);
-      background: #0e0f1a;
-    }
-    .chatbot-input-area input {
-      flex: 1;
-      background: #1a1b2e;
-      border: 1px solid rgba(99, 102, 241, 0.15);
-      border-radius: 10px;
-      padding: 10px 14px;
-      color: #e2e8f0;
-      font-size: 12px;
-      outline: none;
-      transition: border-color 0.2s;
-      font-family: 'Inter', sans-serif;
-    }
-    .chatbot-input-area input:focus {
-      border-color: #6366f1;
-    }
-    .chatbot-input-area input::placeholder {
-      color: #4a5568;
-    }
-    .chatbot-input-area button {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      border: none;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: #fff;
-      cursor: pointer;
-      font-size: 15px;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .chatbot-input-area button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
-    }
-    .chatbot-input-area button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-
-
-    /* Quick suggestion chips */
-    .chat-suggestions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding: 0 16px 12px;
-    }
-    .chat-chip {
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      color: #a5b4fc;
-      font-size: 11px;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .chat-chip:hover {
-      background: rgba(99, 102, 241, 0.2);
-      color: #fff;
-    }
-
-    /* Mobile responsive */
-    @media (max-width: 480px) {
-      .chatbot-window {
-        right: 10px;
-        left: 10px;
-        bottom: 100px;
-        width: auto;
-        max-height: 70vh;
-      }
-      .chatbot-toggle {
-        bottom: 80px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-      }
-    }
-    @media (min-width: 481px) and (max-width: 768px) {
-      .chatbot-toggle {
-        bottom: 80px;
-        right: 24px;
-      }
-      .chatbot-window {
-        bottom: 150px;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -435,7 +90,7 @@
       <i class="fas fa-envelope"></i>
       <span class="nav-tooltip">Contact</span>
     </a>
-    <a href="javascript:void(0)" class="nav-item" onclick="toggleChatbot()" style="color:#a5b4fc">
+    <a href="javascript:void(0)" class="nav-item" onclick="toggleChatbot()">
       <i class="fas fa-robot"></i>
       <span class="nav-tooltip">AI Chat</span>
     </a>
@@ -460,30 +115,23 @@
 
     <!-- ═══ HERO ════════════════════════════════════ -->
     <section id="hero">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-
       <div class="hero-content">
         <div class="hero-badge">
           <span class="dot"></span>
           Available for Collaboration &amp; Opportunities
         </div>
 
-        <h1 class="hero-title">
-          Muhammad<br>
-          <span class="highlight">Muzammil</span> Shah
-        </h1>
+        <h1 class="hero-title">M. Muzammil Shah</h1>
 
         <div class="hero-role">
           <span id="typedRole" class="typed-text"></span>
         </div>
 
         <p class="hero-desc">
-          <strong>Power Platform Consultant & AI Engineer</strong> specializing in enterprise-scale AI agents,
-          intelligent automation, and business-critical cloud solutions.
-          I deliver measurable ROI through <strong>Microsoft Copilot Studio</strong>, <strong>Power Automate</strong>,
-          <strong>Power Apps</strong>, <strong>Dataverse</strong>, <strong>Power Pages</strong>,
-          <strong>Azure Web Services</strong>, <strong>Azure AI Foundry</strong>, and <strong>Azure Machine Learning Studio</strong>.
+          Power Platform Consultant & AI Engineer. I build Copilot Studio agents and automation
+          that take manual steps out of how teams work — using Microsoft Copilot Studio, Power Automate,
+          Power Apps, Dataverse, Power Pages,
+          Azure Web Services, Azure AI Foundry, and Azure Machine Learning Studio.
         </p>
 
         <div class="hero-cta">
@@ -504,27 +152,77 @@
             <div class="stat-label">GitHub Projects</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value">3</div>
-            <div class="stat-label">Fellowships</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-value">6+</div>
+            <div class="stat-value">12</div>
             <div class="stat-label">Certifications</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value">β-MLSA</div>
-            <div class="stat-label">Microsoft</div>
+            <div class="stat-value">7</div>
+            <div class="stat-label">Sessions Delivered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">Associate</div>
+            <div class="stat-label">Microsoft MLSA</div>
           </div>
         </div>
       </div>
 
-      <!-- Hero Avatar -->
-      <div class="hero-img-wrap">
-        <div class="hero-img-ring">
-          <div class="hero-img-inner">
-            <img src="img/photo-portrait.webp" alt="Muhammad Muzammil Shah"
-              style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;">
+      <!-- Hero 3D flow stage — a Power Automate flow as real CSS-3D planes -->
+      <div class="hero-stage" id="heroStage">
+        <div class="stage-inner" id="stageInner">
+
+          <div class="flow-portrait">
+            <img src="img/photo-portrait.webp" alt="Muhammad Muzammil Shah">
           </div>
+
+          <svg class="flow-wires" viewBox="0 0 460 520" aria-hidden="true" focusable="false">
+            <path class="wire" d="M237,78 C237,100 201,96 201,118" />
+            <path class="wire" d="M201,196 C201,218 233,214 233,236" />
+            <path class="wire" d="M233,314 C233,336 213,332 213,354" />
+            <path class="wire-pulse" d="M237,78 C237,100 201,96 201,118" />
+            <path class="wire-pulse d2" d="M201,196 C201,218 233,214 233,236" />
+            <path class="wire-pulse d3" d="M233,314 C233,336 213,332 213,354" />
+          </svg>
+
+          <div class="flow-node node-1">
+            <i class="fas fa-bolt" aria-hidden="true"></i>
+            <div class="node-body">
+              <span class="node-name">Trigger</span>
+              <div class="node-chips">
+                <span>Teams</span><span>Power Pages</span><span>Forms</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-node node-2 is-ai">
+            <i class="fas fa-robot" aria-hidden="true"></i>
+            <div class="node-body">
+              <span class="node-name">Reason</span>
+              <div class="node-chips">
+                <span>Copilot Studio</span><span>Azure AI Foundry</span><span>Azure ML</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-node node-3">
+            <i class="fas fa-diagram-project" aria-hidden="true"></i>
+            <div class="node-body">
+              <span class="node-name">Automate</span>
+              <div class="node-chips">
+                <span>Power Automate</span><span>Power Apps</span><span>n8n</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-node node-4">
+            <i class="fas fa-database" aria-hidden="true"></i>
+            <div class="node-body">
+              <span class="node-name">Store &amp; serve</span>
+              <div class="node-chips">
+                <span>Dataverse</span><span>Azure Web Services</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -536,82 +234,77 @@
           <span class="section-label">About Me</span>
           <h2 class="section-title">Building the Future<br>with AI</h2>
 
-          <div class="availability-badge">
-            <i class="fas fa-circle" style="font-size:8px"></i>
-            Open to Work &amp; Collaboration
-          </div>
-
           <p>
-            I'm a <strong>Power Platform Consultant & AI Engineer</strong> from Karachi, Pakistan,
-            specializing in enterprise-grade AI solutions and automation.
-            I architect and deploy production-grade <strong>Copilot Studio agents</strong>, intelligent
-            <strong>Power Automate workflows</strong>, <strong>Power Apps experiences</strong>, and
-            <strong>Dataverse-driven solutions</strong> that improve productivity, reduce manual effort,
+            I'm a Power Platform Consultant & AI Engineer from Karachi, Pakistan,
+            specializing in AI solutions and automation.
+            I architect and deploy Copilot Studio agents, intelligent
+            Power Automate workflows, Power Apps experiences, and
+            Dataverse-driven solutions that improve productivity, reduce manual effort,
             and create measurable business value.
           </p>
           <p>
-            Currently working as a <strong>Power Platform Consultant</strong> at <strong>1Dynamics PTY LTD</strong> (Australia),
-            where I design and deploy production AI and automation solutions using <strong>Microsoft Copilot Studio</strong>,
-            <strong>Power Automate</strong>, <strong>Power Apps</strong>, <strong>Dataverse</strong>, <strong>Power Pages</strong>,
-            <strong>Azure Web Services</strong>, <strong>Azure AI Foundry</strong>, and <strong>Azure Machine Learning Studio</strong>.
-            As a <strong>Associate Microsoft Student Ambassador</strong>, I also lead sessions on Azure ML, Generative AI, and RAG systems at SMIU.
+            Currently working as a Power Platform Consultant at <strong>1Dynamics PTY LTD</strong> (Australia),
+            where I design and deploy production AI and automation solutions using Microsoft Copilot Studio,
+            Power Automate, Power Apps, Dataverse, Power Pages,
+            Azure Web Services, Azure AI Foundry, and Azure Machine Learning Studio.
+            I am also the founder of <strong>JobVibe AI</strong>, an AI-powered recruitment automation platform,
+            and I teach Artificial Intelligence at <strong>Bano Qabil</strong> (Alkhidmat Foundation Pakistan).
+            As an Associate Microsoft Student Ambassador, I lead sessions on Azure ML, Generative AI, and RAG systems at SMIU.
           </p>
           <p>
-            I'm also a skilled <strong>ML/DL engineer</strong> with deep expertise in <strong>Python-based AI systems</strong>\u2014from
-            <strong>NLP</strong> and <strong>Computer Vision</strong> (OpenCV, YOLO) to end-to-end Generative AI pipelines
-            (STT \u2192 LLM \u2192 TTS). I specialize in building <strong>scalable, production-ready systems</strong> that deliver real-world impact,
-            whether through intelligent automation, advanced analytics, or AI-driven innovation.
+            I'm also a skilled ML/DL engineer with deep expertise in Python-based AI systems—from
+            NLP and Computer Vision (OpenCV, YOLO) to end-to-end Generative AI pipelines
+            (STT → LLM → TTS). I focus on systems that hold up in production rather than demos.
           </p>
 
           <div class="mlsa-badge">
-            <i class="fab fa-microsoft" style="color:#00a4ef;font-size:20px"></i>
-            <span>Beta Microsoft Student Ambassador — Since Sep 2024</span>
+            <i class="fab fa-microsoft" style="color:var(--azure);font-size:20px"></i>
+            <span>Associate Microsoft Student Ambassador — Since Sep 2024</span>
           </div>
         </div>
 
-        <div class="about-info-grid reveal">
-          <div class="info-item">
-            <div class="info-label"><i class="fas fa-envelope"></i> Email</div>
-            <div class="info-value">
-              <a href="mailto:syedmmuzammil42101@gmail.com">
-                syedmmuzammil42101@gmail.com
-              </a>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-label"><i class="fas fa-mobile-alt"></i> Phone</div>
-            <div class="info-value">+92 330 2358711</div>
-          </div>
-          <div class="info-item">
-            <div class="info-label"><i class="fas fa-map-marker-alt"></i> Location</div>
-            <div class="info-value">Karachi, Sindh, Pakistan</div>
-          </div>
-          <div class="info-item">
-            <div class="info-label"><i class="fab fa-linkedin-in"></i> LinkedIn</div>
-            <div class="info-value">
-              <a href="https://www.linkedin.com/in/syedmuhammadmuzammil077/" target="_blank">
-                @syedmuhammadmuzammil077
-              </a>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-label"><i class="fab fa-github"></i> GitHub</div>
-            <div class="info-value">
-              <a href="https://github.com/Muhammad-Muzammil-Shah" target="_blank">
-                @Muhammad-Muzammil-Shah
-              </a>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-label"><i class="fas fa-graduation-cap"></i> Degree</div>
-            <div class="info-value" style="color:#22c55e;font-weight:700">BS AI — SMIU <i class="fas fa-check-circle"></i> Completed 2026</div>
-          </div>
-          <div class="info-item">
-            <div class="info-label"><i class="fas fa-circle" style="color:#22c55e;font-size:8px"></i> Status</div>
-            <div class="info-value" style="color:#22c55e;font-weight:700">Available for Work</div>
-          </div>
+      </div>
 
+      <div class="slider-wrapper reveal" style="margin-top:28px;">
+        <div class="slider-track" id="infoTrack">
+            <div class="info-item">
+              <div class="info-label"><i class="fas fa-envelope"></i> Email</div>
+              <div class="info-value">
+                <a href="mailto:syedmmuzammil42101@gmail.com">
+                  syedmmuzammil42101@gmail.com
+                </a>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-label"><i class="fas fa-mobile-alt"></i> Phone</div>
+              <div class="info-value">+92 330 2358711</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label"><i class="fas fa-map-marker-alt"></i> Location</div>
+              <div class="info-value">Karachi, Sindh, Pakistan</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label"><i class="fab fa-linkedin-in"></i> LinkedIn</div>
+              <div class="info-value">
+                <a href="https://www.linkedin.com/in/syedmuhammadmuzammil077/" target="_blank">
+                  @syedmuhammadmuzammil077
+                </a>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-label"><i class="fab fa-github"></i> GitHub</div>
+              <div class="info-value">
+                <a href="https://github.com/Muhammad-Muzammil-Shah" target="_blank">
+                  @Muhammad-Muzammil-Shah
+                </a>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-label"><i class="fas fa-graduation-cap"></i> Degree</div>
+              <div class="info-value" style="color:var(--ok);font-weight:700">BS AI — SMIU <i class="fas fa-check-circle"></i> Completed 2026</div>
+            </div>
         </div>
+        <div class="slider-dots" id="infoDots"></div>
       </div>
     </section>
 
@@ -623,46 +316,112 @@
         <p class="section-subtitle">Hands-on roles at international and local tech organizations</p>
       </div>
 
-      <div class="timeline" style="margin-top:48px">
+      <div class="timeline" style="margin-top:28px">
+
+        <!-- Bano Qabil -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-head">
+              <div class="timeline-heading">
+                <div class="timeline-role">AI Instructor</div>
+                <div class="timeline-company">
+                  <i class="fas fa-chalkboard-user"></i> Bano Qabil &mdash;
+                  <a href="https://banoqabil.pk/faculty" target="_blank" rel="noopener noreferrer">Alkhidmat Foundation Pakistan
+                  <i class="fas fa-arrow-up-right-from-square"></i></a>
+                  </div>
+              </div>
+              <div class="timeline-meta">
+                <div class="timeline-period"><i class="fas fa-calendar-alt"></i> Sep 2026 – Present</div>
+                <div class="timeline-commitment">Part-time</div>
+              </div>
+            </div>
+            <ul class="timeline-desc">
+              <li>Teach Artificial Intelligence on Alkhidmat Foundation's free IT education
+                programme, training students across Karachi campuses</li>
+              <li>Deliver hands-on modules in Python, Machine Learning,
+                NLP, and Generative AI &amp; AI agents — fundamentals through
+                to working projects</li>
+              <li>Mentor students on portfolio-ready builds, code review, and preparation for
+                their first technical roles</li>
+            </ul>
+            <div class="project-badge"><i class="fas fa-chalkboard-user"></i> Teaching &middot; AI</div>
+          </div>
+        </div>
 
         <!-- 1Dynamics -->
-        <div class="timeline-item reveal">
-          <div class="timeline-period">
-            <i class="fas fa-calendar-alt"></i> Feb 2026 – Present
-          </div>
+        <div class="timeline-item">
           <div class="timeline-card">
-            <div class="timeline-role">Power Platform Consultant</div>
-            <div class="timeline-company"><i class="fas fa-globe"></i> 1Dynamics PTY LTD — Remote, Australia</div>
+            <div class="timeline-head">
+              <div class="timeline-heading">
+                <div class="timeline-role">Power Platform Consultant</div>
+                <div class="timeline-company"><i class="fas fa-globe"></i> 1Dynamics PTY LTD — Remote, Australia</div>
+              </div>
+              <div class="timeline-meta">
+                <div class="timeline-period"><i class="fas fa-calendar-alt"></i> Feb 2026 – Present</div>
+                <div class="timeline-commitment">Full-time</div>
+              </div>
+            </div>
             <ul class="timeline-desc">
-              <li>Architected and deployed <strong>production-grade AI agents</strong> in Microsoft Copilot Studio
+              <li>Architected and deployed AI agents in Microsoft Copilot Studio
                 with multi-topic flows, intelligent routing, and Adaptive Cards UI for seamless user engagement</li>
-              <li>Designed and automated <strong>enterprise workflows</strong> using <strong>Power Automate</strong>,
-                <strong>Power Apps</strong>, <strong>Dataverse</strong>, and <strong>Power Pages</strong> integrations
+              <li>Designed and automated enterprise workflows using Power Automate,
+                Power Apps, Dataverse, and Power Pages integrations
                 to remove manual steps and improve operational efficiency</li>
-              <li>Implemented <strong>scheduled automation</strong> and cloud workflows using <strong>Azure Web Services</strong>,
-                <strong>Azure AI Foundry</strong>, and <strong>Azure Machine Learning Studio</strong> with monitoring,
+              <li>Implemented scheduled automation and cloud workflows using Azure Web Services,
+                Azure AI Foundry, and Azure Machine Learning Studio with monitoring,
                 daily progress tracking, and SLA compliance</li>
-              <li>Collaborated in <strong>international agile teams</strong> with consistent delivery,
-                cross-functional communication, and enterprise standards</li>
             </ul>
             <div class="project-badge"><i class="fas fa-globe"></i> Remote · International</div>
           </div>
         </div>
 
-        <!-- Buildable -->
-        <div class="timeline-item reveal">
-          <div class="timeline-period">
-            <i class="fas fa-calendar-alt"></i> Generative AI Fellowship · 3 Months
-          </div>
+        <!-- JobVibe AI -->
+        <div class="timeline-item">
           <div class="timeline-card">
-            <div class="timeline-role">Generative AI Fellow</div>
-            <div class="timeline-company"><i class="fas fa-bolt"></i> Buildable — AI Fellowship Program</div>
+            <div class="timeline-head">
+              <div class="timeline-heading">
+                <div class="timeline-role">Founder</div>
+                <div class="timeline-company">
+                  <i class="fas fa-rocket"></i> JobVibe AI &mdash;
+                  <a href="https://www.jobvibeai.com" target="_blank" rel="noopener noreferrer">jobvibeai.com
+                  <i class="fas fa-arrow-up-right-from-square"></i></a>
+                  </div>
+              </div>
+              <div class="timeline-meta">
+                <div class="timeline-period"><i class="fas fa-calendar-alt"></i> Jan 2026 – Present</div>
+                <div class="timeline-commitment">Founder</div>
+              </div>
+            </div>
             <ul class="timeline-desc">
-              <li>Developed <strong>CallBotX</strong> — an industry-grade real-time voice AI agent with RAG retrieval,
+              <li>Founded and built <strong>JobVibe AI</strong>, an AI-powered recruitment automation platform
+                that turns hiring into a fast, fair, and data-driven process</li>
+              <li>Shipped AI resume screening with automated shortlisting that reads a job
+                description and ranks applicants without manual review</li>
+              <li>Built real-time AI interviews — generated question sets plus live scoring
+                across communication, confidence, reasoning, and knowledge</li>
+              <li>Designed percentile-based hiring reports so candidates are compared on
+                evidence rather than background</li>
+            </ul>
+            <div class="project-badge"><i class="fas fa-rocket"></i> Founder &middot; Product</div>
+          </div>
+        </div>
+
+        <!-- Buildable -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-head">
+              <div class="timeline-heading">
+                <div class="timeline-role">Generative AI Fellow</div>
+                <div class="timeline-company"><i class="fas fa-bolt"></i> Buildable — AI Fellowship Program</div>
+              </div>
+              <div class="timeline-period"><i class="fas fa-calendar-alt"></i> Generative AI Fellowship · 3 Months</div>
+            </div>
+            <ul class="timeline-desc">
+              <li>Developed <strong>CallBotX</strong> — a real-time voice AI agent with RAG retrieval,
                 end-to-end STT → LLM → TTS pipeline, and natural conversation management (Flask, Server-Sent Events, Groq LLM)</li>
-              <li>Built scalable <strong>n8n automation workflows</strong> including RAG Research Assistant,
+              <li>Built scalable n8n automation workflows including RAG Research Assistant,
                 WhatsApp Support Bot, and conversational LLM agents—reducing manual support overhead</li>
-              <li>Deployed <strong>VectorShift agents</strong> for content automation: YouTube SEO generation,
+              <li>Deployed VectorShift agents for content automation: YouTube SEO generation,
                 intelligent blog article writing, and resume question-answering systems</li>
             </ul>
             <div class="project-badge"><i class="fas fa-robot"></i> GenAI · LLMs · Voice AI</div>
@@ -670,19 +429,20 @@
         </div>
 
         <!-- Bytewise -->
-        <div class="timeline-item reveal">
-          <div class="timeline-period">
-            <i class="fas fa-calendar-alt"></i> Data Science Fellowship · 3 Months
-          </div>
+        <div class="timeline-item">
           <div class="timeline-card">
-            <div class="timeline-role">Data Science Fellow</div>
-            <div class="timeline-company"><i class="fas fa-chart-bar"></i> Bytewise Limited — Data Science Track</div>
+            <div class="timeline-head">
+              <div class="timeline-heading">
+                <div class="timeline-role">Data Science Fellow</div>
+                <div class="timeline-company"><i class="fas fa-chart-bar"></i> Bytewise Limited — Data Science Track</div>
+              </div>
+              <div class="timeline-period"><i class="fas fa-calendar-alt"></i> Data Science Fellowship · 3 Months</div>
+            </div>
             <ul class="timeline-desc">
-              <li>Built <strong>production-grade NLP system</strong> for emotion analysis and opinion mining
-                from social media data—delivering actionable sentiment insights for business intelligence</li>
-              <li>Created impactful <strong>data visualizations</strong> for real-world trends including
-                COVID-19 pandemic analysis—enabling data-driven decision making for stakeholders</li>
-              <li>Engineered end-to-end <strong>data pipelines</strong> using Python (Pandas, NumPy, Matplotlib, Scikit-learn)
+              <li>Built an NLP system for emotion analysis and opinion mining from social media data,
+                producing sentiment reports for downstream analysis</li>
+              <li>Created data visualizations for public datasets including COVID-19 pandemic analysis</li>
+              <li>Engineered end-to-end data pipelines using Python (Pandas, NumPy, Matplotlib, Scikit-learn)
                 with rigorous data cleaning, transformation, and exploratory analysis</li>
             </ul>
             <div class="project-badge"><i class="fas fa-chart-bar"></i> Data Science · NLP</div>
@@ -690,20 +450,21 @@
         </div>
 
         <!-- MLSA -->
-        <div class="timeline-item reveal">
-          <div class="timeline-period">
-            <i class="fas fa-calendar-alt"></i> Sep 2024 – Present
-          </div>
+        <div class="timeline-item">
           <div class="timeline-card">
-            <div class="timeline-role">Beta Microsoft Student Ambassador</div>
-            <div class="timeline-company"><i class="fab fa-microsoft"></i> Microsoft — SMIU Campus Lead</div>
+            <div class="timeline-head">
+              <div class="timeline-heading">
+                <div class="timeline-role">Associate Microsoft Student Ambassador</div>
+                <div class="timeline-company"><i class="fab fa-microsoft"></i> Microsoft — SMIU Campus Lead</div>
+              </div>
+              <div class="timeline-period"><i class="fas fa-calendar-alt"></i> Sep 2024 – Present</div>
+            </div>
             <ul class="timeline-desc">
-              <li>Led <strong>technical workshops</strong> on Azure Machine Learning Studio pipelines for 100+ students,
+              <li>Led technical workshops on Azure Machine Learning Studio pipelines for 100+ students,
                 simplifying complex ML concepts and driving adoption of cloud ML tools</li>
-              <li>Delivered <strong>keynote sessions</strong> on Generative AI and Sora integration on Azure,
-                positioning the campus as a hub for cutting-edge AI innovation</li>
-              <li>Showcased <strong>production RAG systems</strong> and intelligent knowledge base copilots to the campus community,
-                demonstrating real-world enterprise AI applications and best practices</li>
+              <li>Delivered sessions on Generative AI and Sora on Azure, covering prompting,
+                deployment and practical use cases</li>
+              <li>Showcased RAG systems and knowledge-base copilots to the campus community</li>
               <li>Mentored 50+ students on AI fundamentals, career pathways, and Microsoft ecosystem opportunities</li>
             </ul>
             <div class="project-badge"><i class="fas fa-trophy"></i> Leadership · Community Building</div>
@@ -715,6 +476,31 @@
 
     <!-- ═══ SKILLS ════════════════════════════════════ -->
     <section id="skills" class="section">
+      <div class="tool-field" aria-hidden="true">
+        <img src="img/logos/python.svg" alt="" width="26" height="26" loading="lazy" style="left:4%;top:6%;--s:26px;--dur:46s;--delay:-0s;--v:a">
+        <span style="left:22%;top:4%;--dur:53s;--delay:-49s;--v:b">Copilot Studio</span>
+        <img src="img/logos/langchain.svg" alt="" width="36" height="36" loading="lazy" style="left:41%;top:9%;--s:36px;--dur:60s;--delay:-38s;--v:c">
+        <img src="img/logos/openai.svg" alt="" width="26" height="26" loading="lazy" style="left:60%;top:3%;--s:26px;--dur:67s;--delay:-27s;--v:a">
+        <span style="left:78%;top:8%;--dur:74s;--delay:-16s;--v:b">Power Automate</span>
+        <img src="img/logos/n8n.svg" alt="" width="36" height="36" loading="lazy" style="left:92%;top:5%;--s:36px;--dur:81s;--delay:-5s;--v:c">
+        <img src="img/logos/supabase.svg" alt="" width="26" height="26" loading="lazy" style="left:12%;top:28%;--s:26px;--dur:88s;--delay:-54s;--v:a">
+        <span style="left:31%;top:25%;--dur:52s;--delay:-43s;--v:b">Power Apps</span>
+        <img src="img/logos/github.svg" alt="" width="36" height="36" loading="lazy" style="left:50%;top:31%;--s:36px;--dur:59s;--delay:-32s;--v:c">
+        <img src="img/logos/git.svg" alt="" width="26" height="26" loading="lazy" style="left:69%;top:24%;--s:26px;--dur:66s;--delay:-21s;--v:a">
+        <span style="left:87%;top:29%;--dur:73s;--delay:-10s;--v:b">Dataverse</span>
+        <img src="img/logos/flask.svg" alt="" width="36" height="36" loading="lazy" style="left:3%;top:52%;--s:36px;--dur:80s;--delay:-59s;--v:c">
+        <img src="img/logos/pandas.svg" alt="" width="26" height="26" loading="lazy" style="left:20%;top:56%;--s:26px;--dur:87s;--delay:-48s;--v:a">
+        <span style="left:38%;top:50%;--dur:51s;--delay:-37s;--v:b">Power Pages</span>
+        <img src="img/logos/numpy.svg" alt="" width="36" height="36" loading="lazy" style="left:57%;top:57%;--s:36px;--dur:58s;--delay:-26s;--v:c">
+        <img src="img/logos/scikitlearn.svg" alt="" width="26" height="26" loading="lazy" style="left:75%;top:51%;--s:26px;--dur:65s;--delay:-15s;--v:a">
+        <span style="left:94%;top:55%;--dur:72s;--delay:-4s;--v:b">Azure AI Foundry</span>
+        <img src="img/logos/opencv.svg" alt="" width="36" height="36" loading="lazy" style="left:9%;top:76%;--s:36px;--dur:79s;--delay:-53s;--v:c">
+        <img src="img/logos/twilio.svg" alt="" width="26" height="26" loading="lazy" style="left:27%;top:80%;--s:26px;--dur:86s;--delay:-42s;--v:a">
+        <span style="left:46%;top:74%;--dur:50s;--delay:-31s;--v:b">Azure ML</span>
+        <img src="img/logos/docker.svg" alt="" width="36" height="36" loading="lazy" style="left:65%;top:81%;--s:36px;--dur:57s;--delay:-20s;--v:c">
+        <span style="left:84%;top:77%;--dur:64s;--delay:-9s;--v:a">Power BI</span>
+      </div>
+
       <div class="reveal">
         <span class="section-label">Skills</span>
         <h2 class="section-title">Technical Expertise</h2>
@@ -722,8 +508,9 @@
           automation</p>
       </div>
 
-      <div class="skills-grid" style="margin-top:48px">
-        <div class="skill-category reveal">
+      <div class="slider-wrapper reveal" style="margin-top:28px;">
+        <div class="slider-track" id="skillTrack">
+        <div class="skill-category">
           <div class="skill-category-icon"><i class="fab fa-microsoft"></i></div>
           <div class="skill-category-name">Power Platform & Azure AI</div>
           <div class="skill-tags">
@@ -738,7 +525,7 @@
           </div>
         </div>
 
-        <div class="skill-category reveal">
+        <div class="skill-category">
           <div class="skill-category-icon"><i class="fas fa-brain"></i></div>
           <div class="skill-category-name">AI / ML / LLMs</div>
           <div class="skill-tags">
@@ -753,7 +540,7 @@
           </div>
         </div>
 
-        <div class="skill-category reveal">
+        <div class="skill-category">
           <div class="skill-category-icon"><i class="fas fa-code"></i></div>
           <div class="skill-category-name">Programming & Data</div>
           <div class="skill-tags">
@@ -768,7 +555,7 @@
           </div>
         </div>
 
-        <div class="skill-category reveal">
+        <div class="skill-category">
           <div class="skill-category-icon"><i class="fas fa-cogs"></i></div>
           <div class="skill-category-name">No-Code / Automation</div>
           <div class="skill-tags">
@@ -782,7 +569,7 @@
           </div>
         </div>
 
-        <div class="skill-category reveal">
+        <div class="skill-category">
           <div class="skill-category-icon"><i class="fas fa-cloud"></i></div>
           <div class="skill-category-name">Cloud & DevOps</div>
           <div class="skill-tags">
@@ -796,7 +583,7 @@
           </div>
         </div>
 
-        <div class="skill-category reveal">
+        <div class="skill-category">
           <div class="skill-category-icon"><i class="fas fa-chart-bar"></i></div>
           <div class="skill-category-name">Data Science & Analytics</div>
           <div class="skill-tags">
@@ -809,6 +596,8 @@
             <span class="skill-tag">Opinion Mining</span>
           </div>
         </div>
+        </div>
+        <div class="slider-dots" id="skillDots"></div>
       </div>
     </section>
 
@@ -821,7 +610,7 @@
         </p>
       </div>
 
-      <div class="projects-filter reveal" style="margin-top:32px">
+      <div class="projects-filter reveal" style="margin-top:28px">
         <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
         <button class="filter-btn" onclick="filterProjects('ai-agents', this)">AI Agents</button>
         <button class="filter-btn" onclick="filterProjects('nlp', this)">NLP</button>
@@ -830,10 +619,11 @@
         <button class="filter-btn" onclick="filterProjects('automation', this)">Automation</button>
       </div>
 
-      <div class="projects-grid" id="projectsGrid" style="margin-top:32px">
+      <div class="slider-wrapper reveal" style="margin-top:28px;">
+        <div class="slider-track" id="projectsGrid">
 
         <!-- CallBotX -->
-        <div class="project-card featured reveal" data-cat="ai-agents">
+        <div class="project-card featured" data-cat="ai-agents">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-microphone-alt"></i></div>
             <div class="project-links">
@@ -852,12 +642,12 @@
             <span class="tech-tag">RAG</span>
             <span class="tech-tag">STT/TTS</span>
             <span class="tech-tag">SSE</span>
+            <div class="project-badge"><i class="fas fa-star"></i> Featured</div>
           </div>
-          <div class="project-badge"><i class="fas fa-star"></i> Featured</div>
         </div>
 
         <!-- Job Email Sender AI -->
-        <div class="project-card featured reveal" data-cat="ai-agents automation">
+        <div class="project-card featured" data-cat="ai-agents automation">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-envelope-open-text"></i></div>
             <div class="project-links">
@@ -868,19 +658,19 @@
             </div>
           </div>
           <div class="project-name">Job Email Sender AI</div>
-          <p class="project-desc">AI-powered job application email generator &amp; automation tool that reads GitHub
-            repos, summarizes READMEs using LLMs, and sends tailored job emails.</p>
+          <p class="project-desc">Automation tool that ingests GitHub repositories through the API,
+            summarizes READMEs with an LLM, and generates tailored outreach drafts from templates.</p>
           <div class="project-techs">
             <span class="tech-tag">Python</span>
             <span class="tech-tag">LLM</span>
             <span class="tech-tag">GitHub API</span>
             <span class="tech-tag">Email Automation</span>
+            <div class="project-badge"><i class="fas fa-star"></i> Featured</div>
           </div>
-          <div class="project-badge"><i class="fas fa-star"></i> Featured</div>
         </div>
 
         <!-- Azure AI Multi-Modal Generator -->
-        <div class="project-card featured reveal" data-cat="ai-agents">
+        <div class="project-card featured" data-cat="ai-agents">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-cloud-upload-alt"></i></div>
             <div class="project-links">
@@ -898,12 +688,12 @@
             <span class="tech-tag">Multi-Modal</span>
             <span class="tech-tag">Cognitive Services</span>
             <span class="tech-tag">Python</span>
+            <div class="project-badge"><i class="fas fa-star"></i> Featured</div>
           </div>
-          <div class="project-badge"><i class="fas fa-star"></i> Featured</div>
         </div>
 
         <!-- Humanize Editorial Web App -->
-        <div class="project-card reveal" data-cat="ai-agents nlp">
+        <div class="project-card" data-cat="ai-agents nlp">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-pen-nib"></i></div>
             <div class="project-links">
@@ -925,7 +715,7 @@
         </div>
 
         <!-- Real Estate Chatbot -->
-        <div class="project-card reveal" data-cat="ai-agents nlp">
+        <div class="project-card" data-cat="ai-agents nlp">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-home"></i></div>
             <div class="project-links">
@@ -947,7 +737,7 @@
         </div>
 
         <!-- Interview System -->
-        <div class="project-card reveal" data-cat="ai-agents nlp">
+        <div class="project-card" data-cat="ai-agents nlp">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-comments"></i></div>
             <div class="project-links">
@@ -969,7 +759,7 @@
         </div>
 
         <!-- Educational Q&A Bot -->
-        <div class="project-card reveal" data-cat="ai-agents nlp">
+        <div class="project-card" data-cat="ai-agents nlp">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
             <div class="project-links">
@@ -990,7 +780,7 @@
         </div>
 
         <!-- Phishing Email Detection -->
-        <div class="project-card reveal" data-cat="nlp data-science">
+        <div class="project-card" data-cat="nlp data-science">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
             <div class="project-links">
@@ -1012,7 +802,7 @@
         </div>
 
         <!-- Spam Detection -->
-        <div class="project-card reveal" data-cat="nlp data-science">
+        <div class="project-card" data-cat="nlp data-science">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-filter"></i></div>
             <div class="project-links">
@@ -1034,7 +824,7 @@
         </div>
 
         <!-- School Uniform Detection -->
-        <div class="project-card reveal" data-cat="computer-vision">
+        <div class="project-card" data-cat="computer-vision">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-eye"></i></div>
             <div class="project-links">
@@ -1056,7 +846,7 @@
         </div>
 
         <!-- Flag Detection -->
-        <div class="project-card reveal" data-cat="computer-vision">
+        <div class="project-card" data-cat="computer-vision">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-flag"></i></div>
             <div class="project-links">
@@ -1077,7 +867,7 @@
         </div>
 
         <!-- Face Detection -->
-        <div class="project-card reveal" data-cat="computer-vision">
+        <div class="project-card" data-cat="computer-vision">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-user-circle"></i></div>
             <div class="project-links">
@@ -1098,7 +888,7 @@
         </div>
 
         <!-- Emotion Detection -->
-        <div class="project-card reveal" data-cat="computer-vision nlp">
+        <div class="project-card" data-cat="computer-vision nlp">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-smile-beam"></i></div>
             <div class="project-links">
@@ -1120,7 +910,7 @@
         </div>
 
         <!-- EDA Pakistan Properties -->
-        <div class="project-card reveal" data-cat="data-science">
+        <div class="project-card" data-cat="data-science">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-city"></i></div>
             <div class="project-links">
@@ -1142,7 +932,7 @@
         </div>
 
         <!-- ETL with Python -->
-        <div class="project-card reveal" data-cat="data-science automation">
+        <div class="project-card" data-cat="data-science automation">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-sync-alt"></i></div>
             <div class="project-links">
@@ -1164,7 +954,7 @@
         </div>
 
         <!-- Crypto Codex -->
-        <div class="project-card reveal" data-cat="data-science">
+        <div class="project-card" data-cat="data-science">
           <div class="project-header">
             <div class="project-icon"><i class="fab fa-bitcoin"></i></div>
             <div class="project-links">
@@ -1186,7 +976,7 @@
         </div>
 
         <!-- Linear Regression -->
-        <div class="project-card reveal" data-cat="data-science">
+        <div class="project-card" data-cat="data-science">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-chart-line"></i></div>
             <div class="project-links">
@@ -1207,7 +997,7 @@
         </div>
 
         <!-- Web Scraping -->
-        <div class="project-card reveal" data-cat="automation data-science">
+        <div class="project-card" data-cat="automation data-science">
           <div class="project-header">
             <div class="project-icon"><i class="fas fa-spider"></i></div>
             <div class="project-links">
@@ -1228,6 +1018,8 @@
           </div>
         </div>
 
+        </div>
+        <div class="slider-dots" id="projDots"></div>
       </div>
 
       <div class="reveal" style="text-align:center; margin-top:40px;">
@@ -1244,16 +1036,16 @@
         <h2 class="section-title">Academic Background</h2>
       </div>
 
-      <div class="education-grid" style="margin-top:48px">
+      <div class="education-grid" style="margin-top:28px">
 
         <div class="education-card reveal">
           <div class="edu-icon"><i class="fas fa-university"></i></div>
-          <div class="edu-degree">BS — Artificial Intelligence <i class="fas fa-check-circle" style="color:#22c55e;font-size:.9em"></i></div>
+          <div class="edu-degree">BS — Artificial Intelligence <i class="fas fa-check-circle" style="color:var(--ok);font-size:.9em"></i></div>
           <div class="edu-institution">Sindh Madressatul Islam University (SMIU)</div>
-          <div class="edu-period"><i class="fas fa-calendar-alt"></i> 2022 – 2026 &nbsp;·&nbsp; <span style="color:#22c55e;font-weight:700">Degree Completed</span></div>
+          <div class="edu-period"><i class="fas fa-calendar-alt"></i> 2022 – 2026 &nbsp;·&nbsp; <span style="color:var(--ok);font-weight:700">Degree Completed</span></div>
           <p class="edu-desc">
             Focused on machine learning, deep learning, NLP, computer vision, and AI-driven system design.
-            Completed hands-on projects in all major AI domains. Served as campus leader as Beta Microsoft Student
+            Completed hands-on projects in all major AI domains. Served as campus leader as Associate Microsoft Student
             Ambassador throughout the degree.
           </p>
         </div>
@@ -1265,17 +1057,7 @@
           <div class="edu-period"><i class="fas fa-calendar-alt"></i> Certificate Program</div>
           <p class="edu-desc">
             Specialized data science training covering statistical methods, Python data tools, machine learning
-            fundamentals, and real-world data projects at Pakistan's leading engineering university.
-          </p>
-        </div>
-
-        <div class="education-card reveal">
-          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-          <div class="edu-degree">Intermediate (Pre-Engineering)</div>
-          <div class="edu-period"><i class="fas fa-calendar-alt"></i> Pre-University</div>
-          <p class="edu-desc">
-            Foundation in mathematics, physics, and computer science that laid the groundwork for pursuing Artificial
-            Intelligence at the university level.
+            fundamentals, and applied data projects.
           </p>
         </div>
 
@@ -1290,10 +1072,8 @@
         <p class="section-subtitle">Continuously upskilling across cloud AI, data science, and machine learning</p>
       </div>
 
-      <div class="slider-wrapper reveal" style="margin-top:48px; padding: 0 28px;">
-        <button class="slider-arrow prev" id="certPrev" aria-label="Previous certificate"><i class="fas fa-chevron-left"></i></button>
+      <div class="slider-wrapper reveal" style="margin-top:28px;">
         <div class="slider-track" id="certTrack"></div>
-        <button class="slider-arrow next" id="certNext" aria-label="Next certificate"><i class="fas fa-chevron-right"></i></button>
         <div class="slider-dots" id="certDots"></div>
       </div>
     </section>
@@ -1303,12 +1083,10 @@
       <div class="reveal">
         <span class="section-label">Sessions</span>
         <h2 class="section-title">Knowledge Sessions<br>I've Delivered</h2>
-        <p class="section-subtitle">Technical workshops &amp; keynotes as Beta Microsoft Student Ambassador at SMIU — Azure AI, Generative AI, automation, and cloud</p>
+        <p class="section-subtitle">Technical workshops &amp; keynotes as Associate Microsoft Student Ambassador at SMIU — Azure AI, Generative AI, automation, and cloud</p>
       </div>
-      <div class="slider-wrapper reveal" style="margin-top:48px; padding: 0 28px;">
-        <button class="slider-arrow prev" id="sessionPrev" aria-label="Previous session"><i class="fas fa-chevron-left"></i></button>
+      <div class="slider-wrapper reveal" style="margin-top:28px;">
         <div class="slider-track" id="sessionTrack"></div>
-        <button class="slider-arrow next" id="sessionNext" aria-label="Next session"><i class="fas fa-chevron-right"></i></button>
         <div class="slider-dots" id="sessionDots"></div>
       </div>
     </section>
@@ -1320,8 +1098,7 @@
           <span class="section-label">Contact</span>
           <h2 class="section-title">Let's Build<br>Something Great</h2>
           <p class="section-subtitle">
-            Open to AI engineering roles, freelance projects, research collaborations,
-            and speaking opportunities. Let's connect!
+            Open to Power Platform and AI engineering roles, and to consulting engagements.
           </p>
 
           <div class="contact-info-items">
@@ -1379,36 +1156,12 @@
           </div>
         </div>
 
-        <div class="contact-form reveal">
-          <h3 class="form-heading">Send Me a Message</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="c-name">Your Name</label>
-              <input type="text" id="c-name" placeholder="John Doe">
-            </div>
-            <div class="form-group">
-              <label for="c-email">Email Address</label>
-              <input type="email" id="c-email" placeholder="you@example.com">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="c-subject">Subject</label>
-            <input type="text" id="c-subject" placeholder="Collaboration / Job Opportunity / Project">
-          </div>
-          <div class="form-group">
-            <label for="c-message">Message</label>
-            <textarea id="c-message" placeholder="Tell me about your project or opportunity..."></textarea>
-          </div>
-          <button class="btn-primary" style="width:100%; justify-content:center;" onclick="sendMessage()">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
-        </div>
       </div>
     </section>
 
     <!-- ═══ FOOTER ════════════════════════════════════ -->
     <footer>
-      <div class="footer-brand">Muzammil Shah</div>
+      <div class="footer-brand">M. Muzammil Shah</div>
       <p class="footer-copy">© 2026 Muhammad Muzammil Shah — AI Engineer &amp; Builder</p>
       <div class="footer-socials">
         <a href="https://github.com/Muhammad-Muzammil-Shah" target="_blank" title="GitHub">
@@ -1528,12 +1281,14 @@
     /* ─── Typing Animation ───────────────────── */
     const roles = [
       'Power Platform Consultant',
+      'Founder — JobVibe AI',
       'AI Engineer',
+      'AI Instructor — Bano Qabil',
       'Copilot Studio Developer',
       'Power Automate & Power Apps Specialist',
       'Azure AI Foundry Practitioner',
       'Azure Machine Learning Studio User',
-      'Beta Microsoft Student Ambassador'
+      'Associate Microsoft Student Ambassador'
     ];
 
     let roleIdx = 0, charIdx = 0, isDeleting = false;
@@ -1556,7 +1311,12 @@
       }
       setTimeout(typeEffect, isDeleting ? 50 : 80);
     }
-    setTimeout(typeEffect, 800);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      typedEl.textContent = roles[0];
+      typedEl.style.borderRight = 'none';
+    } else {
+      setTimeout(typeEffect, 800);
+    }
 
     /* ─── Active Nav on Scroll ───────────────── */
     const sections = document.querySelectorAll('section[id]');
@@ -1597,30 +1357,22 @@
         card.style.opacity = '0';
         if (show) setTimeout(() => card.style.opacity = '1', 50);
       });
+
+      // the track is now a slider: rewind it and rebuild dots for the
+      // filtered set, otherwise the dots count the hidden cards too
+      if (projectSlider?.track) {
+        projectSlider.track.scrollTo({ left: 0, behavior: 'smooth' });
+        projectSlider.buildDots('.project-card');
+      }
     }
 
     /* ─── Contact Form ───────────────────────── */
-    function sendMessage() {
-      const name = document.getElementById('c-name').value.trim();
-      const email = document.getElementById('c-email').value.trim();
-      const subject = document.getElementById('c-subject').value.trim();
-      const message = document.getElementById('c-message').value.trim();
-
-      if (!name || !email || !message) {
-        alert('Please fill in your name, email, and message.');
-        return;
-      }
-
-      const mailto = `mailto:syedmmuzammil42101@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Contact')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
-      window.location.href = mailto;
-    }
-
     /* ─── Smooth nav scroll ──────────────────── */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        if (target) target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
       });
     });
 
@@ -1641,7 +1393,7 @@ PERSONAL INFO:
 - Status: Available for Work & Collaboration
 
 SUMMARY:
-I am a Power Platform Consultant and AI Engineer with hands-on experience in Microsoft Copilot Studio, Power Automate, Power Apps, Dataverse, Power Pages, Azure Web Services, Azure AI Foundry, and Azure Machine Learning Studio. I specialize in building AI agents, enterprise automation, and RAG-based knowledge systems using production-ready Microsoft technologies. I have a strong foundation in Machine Learning, NLP, and real-world AI applications. I am also a Beta Microsoft Student Ambassador.
+I am a Power Platform Consultant and AI Engineer with hands-on experience in Microsoft Copilot Studio, Power Automate, Power Apps, Dataverse, Power Pages, Azure Web Services, Azure AI Foundry, and Azure Machine Learning Studio. I specialize in building AI agents, enterprise automation, and RAG-based knowledge systems using production-ready Microsoft technologies. I have a strong foundation in Machine Learning, NLP, and real-world AI applications. I am also the founder of JobVibe AI, an AI recruitment automation platform, an AI Instructor at Bano Qabil (Alkhidmat Foundation Pakistan), and a Associate Microsoft Student Ambassador.
 
 EDUCATION:
 - BS in Artificial Intelligence from Sindh Madressatul Islam University (SMIU), Karachi — Graduated January 2026
@@ -1656,23 +1408,25 @@ TECHNICAL SKILLS:
 - Data Science: EDA, Data Mining, ETL Pipelines, Power BI, Web Scraping, Emotion Analysis, Opinion Mining
 
 PROFESSIONAL EXPERIENCE:
-1. Power Platform Consultant (Remote) — 1Dynamics PTY LTD, Australia (Feb 2026 – Present)
+1. Founder — JobVibe AI (www.jobvibeai.com), Jan 2026 – Present. I founded and built JobVibe AI, an AI-powered recruitment automation platform that makes hiring fast, fair and data-driven. It does AI resume screening and automated shortlisting, generates interview questions from a job description, runs real-time AI interviews that score candidates on communication, confidence, reasoning and knowledge, and produces percentile-based hiring reports so people are compared on evidence rather than background. My mission with it is a hiring ecosystem where talent speaks louder than background.
+2. AI Instructor — Bano Qabil, Alkhidmat Foundation Pakistan (banoqabil.pk/faculty), Sep 2026 – Present. I teach Artificial Intelligence on Alkhidmat Foundation's free IT education programme in Karachi, covering Python, Machine Learning, NLP, and Generative AI & AI agents, and I mentor students on portfolio projects and preparing for their first technical roles.
+3. Power Platform Consultant (Remote) — 1Dynamics PTY LTD, Australia (Feb 2026 – Present)
   - Built and tested production-grade AI agents in Microsoft Copilot Studio with multi-topic flows and Adaptive Cards UI
   - Automated enterprise workflows using Power Automate, Power Apps, Dataverse, and Power Pages integrations
   - Delivered reliable scheduled automation tasks with daily progress tracking using Azure Web Services and Azure AI Foundry
   - Worked in an agile international team environment with consistent delivery
 
-2. Generative AI Fellow — Buildable (<5% acceptance, 12-week program) (3 Months)
+4. Generative AI Fellow — Buildable (<5% acceptance, 12-week program) (3 Months)
    - Developed CallBotX — a real-time voice AI agent with RAG, STT to LLM to TTS pipeline (Flask + SSE + Groq)
    - Built n8n automation workflows: RAG Research Assistant, WhatsApp Support Bot, Groq LLM agent
    - Created VectorShift agents for YouTube SEO generation and automated blog writing
 
-3. Data Science Fellow — Bytewise Limited (3 Months)
+5. Data Science Fellow — Bytewise Limited (3 Months)
    - Built NLP-based emotion analysis and opinion mining system from social media data
-   - Created data visualizations for real-world trends including COVID-19 insights
+   - Created data visualizations for public datasets including COVID-19 insights
    - Applied Python (Pandas, NumPy, Matplotlib) for end-to-end data pipelines
 
-4. Beta Microsoft Student Ambassador (Sep 2024 – Present) — SMIU Campus Lead
+6. Associate Microsoft Student Ambassador (Sep 2024 – Present) — SMIU Campus Lead
    - Led workshops on Azure Machine Learning Studio pipelines
    - Conducted sessions on Generative AI with Sora on Azure
    - Demonstrated production RAG systems & knowledge base copilots
@@ -1689,13 +1443,19 @@ KEY PROJECTS (25+ total):
 - n8n Projects: AI Research Assistant, WhatsApp Support Bot, Conversational WhatsApp Automation Bot
 - VectorShift Projects: YouTube SEO Generator, Blog Article Generator, Resume Q&A Chatbot
 
-CERTIFICATIONS:
-- Microsoft Azure AI Fundamentals (AI-900) — Microsoft
-- Python Crash Course & Machine Learning — Coursera
-- Pandas, NumPy, Data Cleaning and LangChain — DataCamp & Kaggle
-- Data Analytics and Business Intelligence — Digiskills.pk
-- NLP with Python for Machine Learning Essential Training — LinkedIn
-- Data Science from NED University (PITP)
+CERTIFICATIONS (12, exactly as listed on my site):
+- Microsoft Certified: Azure AI Apps and Agents Developer Associate — earned August 2026, valid to August 2027
+- Microsoft Certified: Azure AI Fundamentals (AI-900) — June 2024
+- Microsoft Learn Student Ambassador, Associate level — 2026
+- Machine Learning Specialization — Coursera / Stanford University, January 2024
+- Certified Data Scientist — NED University (PITP), Jan–Mar 2025
+- Certified Database Administrator — NED University (PITP), Jan–Mar 2025
+- Generative AI Fellowship — Buildable, Aug–Nov 2025
+- Data Science Fellowship — Bytewise Limited, Jun–Sep 2024
+- AI/ML Internship Completion — ITSolera, September 2024
+- Data Analytics & Business Intelligence — DigiSkills Pakistan, October 2024
+- NLP with Python for Machine Learning — LinkedIn Learning, October 2024
+- Crash Course on Python — Google / Coursera, December 2023
 
 INTERESTS: Generative AI, Agentic AI, Machine Learning, Data Analyst, Data Science
 
@@ -1835,39 +1595,32 @@ RESPONSE RULES:
        CERTIFICATE & SESSION SLIDERS
     ═══════════════════════════════════════════════════════ */
     const CERT_DATA = [
-      // ── Tier 1: Official Microsoft certifications & recognition ──
+      // ── Microsoft certifications & recognition ──
+      { img: 'img/certificate-microsoft-azure-ai-apps-agents-developer-associate-2026.webp', title: 'Azure AI Apps and Agents Developer', issuer: 'Microsoft Certified', badge: 'Associate', date: 'August 2026', desc: 'Microsoft Certified Associate credential for building, deploying, and operating generative AI apps and agents on Azure AI Foundry — covering agent orchestration, prompt engineering, RAG, and responsible AI. Valid through August 2027.' },
       { img: 'img/certificate-microsoft-azure-ai-fundamentals-2024.webp', title: 'Microsoft Azure AI Fundamentals', issuer: 'Microsoft', badge: 'AI-900', date: 'June 2024', desc: 'Earned the AI-900 certification, validating expertise in AI workloads, machine learning, computer vision, NLP, and conversational AI on Microsoft Azure.' },
       { img: 'img/certificate-mlsa-associate-2026.webp', title: 'Microsoft Student Ambassador', issuer: 'Microsoft', badge: 'Associate', date: '2026', desc: 'Recognized as a Microsoft Learn Student Ambassador at Associate level for leadership in community building and Microsoft technology advocacy.' },
-      // ── Tier 2: Competitive fellowships ──
-      { img: 'img/certificate-buildables-fellowship-ai-2025.webp', title: 'Generative AI Fellowship', issuer: 'Buildable', badge: '<5% Acceptance', date: 'Aug – Nov 2025', desc: 'Completed the 3-month Buildable Generative AI Fellowship — building real-world LLM, RAG pipeline, and voice AI applications in a highly competitive cohort.' },
-      { img: 'img/certificate-bytewise-fellowship-data-science-2024.webp', title: 'Data Science Fellowship', issuer: 'Bytewise Limited', badge: '3 Months', date: 'Jun – Sep 2024', desc: 'Completed the 3-month Bytewise Data Science Fellowship covering Python, NLP, exploratory data analysis, and data-driven storytelling.' },
-      // ── Tier 3: Prestigious course certifications ──
+      // ── University & named-institution programmes ──
       { img: 'img/certificate-coursera-stanford-ml-specialization-2024.webp', title: 'Machine Learning Specialization', issuer: 'Coursera · Stanford University', badge: '', date: 'January 2024', desc: 'Completed the Stanford Machine Learning Specialization by Andrew Ng, covering supervised learning, unsupervised learning, and ML best practices.' },
-      // ── Tier 4: Professional certifications (NED/PITP) ──
       { img: 'img/certificate-pitp-certified-data-scientist-2025.webp', title: 'Certified Data Scientist', issuer: 'NED University · PITP', badge: 'Cert #26062', date: 'Jan – Mar 2025', desc: 'Earned the PITP Certified Data Scientist credential from NED University, covering statistical analysis, machine learning, and Python-based workflows.' },
       { img: 'img/certificate-pitp-certified-database-administrator-2025.webp', title: 'Certified Database Administrator', issuer: 'NED University · PITP', badge: 'Cert #26224', date: 'Jan – Mar 2025', desc: 'Earned the PITP Certified Database Administrator credential from NED University, covering SQL, database design, and administration.' },
-      // ── Tier 5: Internship completion ──
+      // ── Competitive fellowships ──
+      { img: 'img/certificate-buildables-fellowship-ai-2025.webp', title: 'Generative AI Fellowship', issuer: 'Buildable', badge: '3 Months', date: 'Aug – Nov 2025', desc: 'Completed the 3-month Buildable Generative AI Fellowship — building LLM, RAG pipeline, and voice AI applications in a highly competitive cohort.' },
+      { img: 'img/certificate-bytewise-fellowship-data-science-2024.webp', title: 'Data Science Fellowship', issuer: 'Bytewise Limited', badge: '3 Months', date: 'Jun – Sep 2024', desc: 'Completed the 3-month Bytewise Data Science Fellowship covering Python, NLP, exploratory data analysis, and data-driven storytelling.' },
+      // ── Completed internship & coursework ──
       { img: 'img/letter-itsolera-internship-completion-aiml-2024.webp', title: 'AI/ML Internship Completion', issuer: 'ITSolera', badge: 'Jun–Sep 2024', date: 'September 2024', desc: 'Successfully completed the ITSolera AI/ML Internship, working on real-world artificial intelligence and machine learning projects.' },
-      // ── Tier 6: Online course certificates ──
       { img: 'img/certificate-digiskills-data-analytics-bi-2024.webp', title: 'Data Analytics & Business Intelligence', issuer: 'DigiSkills Pakistan', badge: 'DSTP2.0 Batch-08', date: 'October 2024', desc: 'Completed Data Analytics and Business Intelligence training, covering BI tools, data visualization, dashboarding, and analytics pipelines.' },
       { img: 'img/certificate-linkedinlearning-nlp-with-python-2024.webp', title: 'NLP with Python for ML', issuer: 'LinkedIn Learning', badge: '', date: 'October 2024', desc: 'Completed NLP with Python for Machine Learning Essential Training — covering text preprocessing, TF-IDF, embeddings, and NLP model building.' },
       { img: 'img/certificate-google-coursera-crash-course-python-2023.webp', title: 'Crash Course on Python', issuer: 'Google · Coursera', badge: '', date: 'December 2023', desc: "Completed Google's Python crash course covering programming fundamentals, data structures, OOP, and automation scripting." },
-      // ── Tier 7: Internship selections ──
-      { img: 'img/certificate-itsolera-internship-selection-2026.webp', title: 'AI & NLP Winter Internship Selection', issuer: 'ITSolera', badge: 'Winter 2026', date: 'Winter 2026', desc: 'Selected for the ITSolera AI & NLP Winter Internship program (2026).' },
-      { img: 'img/certificate-itsolera-internship-selection-2024.webp', title: 'AI Internship Selection', issuer: 'ITSolera', badge: 'REF#6102024-521', date: '2024', desc: 'Selected for the ITSolera AI Internship program (2024), recognizing academic excellence and demonstrated AI/ML skills.' },
-      // ── Tier 8: Event & volunteer certificates ──
-      { img: 'img/certificate-iccrt2025-volunteer-appreciation.webp', title: 'ICCRT-2025 Volunteer Appreciation', issuer: 'SMI University', badge: 'ICCRT 2025', date: 'May 2025', desc: 'Received volunteer appreciation at the ICCRT-2025 international conference at SMI University (May 21–22, 2025).' },
-      { img: 'img/certificate-iccrt2025-workshop-participation.webp', title: 'ICCRT-2025 Workshop Participation', issuer: 'SMI University', badge: 'ICCRT 2025', date: 'May 20, 2025', desc: 'Participated in the ICCRT-2025 workshop "Agility in Research Projects" at SMI University on May 20, 2025.' }
     ];
 
     const SESSION_DATA = [
-      { icon: '<i class="fas fa-bolt"></i>', color: '#6366f1', title: 'Automation With Power Automate', desc: 'Hands-on workshop covering Power Automate flows, triggers, connectors, and real-world enterprise automation scenarios — helping students build no-code automation skills.', venue: 'SMIU · Beta MLSA' },
-      { icon: '<i class="fas fa-cloud"></i>', color: '#0ea5e9', title: 'Build & Host Your Portfolio Using Azure for FREE', desc: 'Step-by-step session on deploying and hosting a personal portfolio website using Azure Static Web Apps and Azure free-tier services — zero cost from start to live URL.', venue: 'SMIU · Beta MLSA' },
-      { icon: '<i class="fas fa-brain"></i>', color: '#8b5cf6', title: 'RAG in Production: Building Real-World AI Knowledge Systems', desc: 'Deep dive into Retrieval-Augmented Generation — from vector stores and embeddings to production-ready knowledge base copilots using Azure AI Foundry and LangChain.', venue: 'SMIU · Beta MLSA' },
-      { icon: '<i class="fas fa-video"></i>', color: '#ec4899', title: 'How to Generate AI Videos with Sora', desc: "Explored Microsoft Sora's AI video generation capabilities on Azure, showcasing real-world use cases, effective prompting techniques, and creative production applications.", venue: 'SMIU · Beta MLSA' },
-      { icon: '<i class="fas fa-robot"></i>', color: '#22c55e', title: 'Building Your Own Chatbot using Azure OpenAI', desc: 'Workshop on building a custom chatbot from scratch using Azure OpenAI Service — covering prompt engineering, system messages, deployment, and real-world integration patterns.', venue: 'SMIU · Beta MLSA' },
-      { icon: '<i class="fas fa-magic"></i>', color: '#f59e0b', title: 'Exploring Generative AI with Azure AI Studio', desc: 'Introduced Azure AI Studio — covering the model catalog, prompt flow, fine-tuning options, and how to deploy generative AI applications at enterprise scale.', venue: 'SMIU · Beta MLSA' },
-      { icon: '<i class="fas fa-flask"></i>', color: '#06b6d4', title: 'Build, Train & Deploy With Azure Machine Learning Studio', desc: 'Led a hands-on session on Azure ML Studio covering dataset preparation, pipeline-based model training, experiment tracking, and deploying models to real-time endpoints.', venue: 'SMIU · Beta MLSA' }
+      { icon: '<i class="fas fa-bolt"></i>', color: '#4338CA', title: 'Automation With Power Automate', desc: 'Hands-on workshop covering Power Automate flows, triggers, connectors, and enterprise automation scenarios — helping students build no-code automation skills.', venue: 'SMIU · Associate MLSA' },
+      { icon: '<i class="fas fa-cloud"></i>', color: '#0B5CAD', title: 'Build & Host Your Portfolio Using Azure for FREE', desc: 'Step-by-step session on deploying and hosting a personal portfolio website using Azure Static Web Apps and Azure free-tier services — zero cost from start to live URL.', venue: 'SMIU · Associate MLSA' },
+      { icon: '<i class="fas fa-brain"></i>', color: '#6E3BC0', title: 'RAG in Production: Building Real-World AI Knowledge Systems', desc: 'Deep dive into Retrieval-Augmented Generation — from vector stores and embeddings to production-ready knowledge base copilots using Azure AI Foundry and LangChain.', venue: 'SMIU · Associate MLSA' },
+      { icon: '<i class="fas fa-video"></i>', color: '#B4009E', title: 'How to Generate AI Videos with Sora', desc: "Explored Microsoft Sora's AI video generation capabilities on Azure, covering prompting techniques, and creative production applications.", venue: 'SMIU · Associate MLSA' },
+      { icon: '<i class="fas fa-robot"></i>', color: '#0E7A4B', title: 'Building Your Own Chatbot using Azure OpenAI', desc: 'Workshop on building a custom chatbot from scratch using Azure OpenAI Service — covering prompt engineering, system messages, deployment, and integration patterns.', venue: 'SMIU · Associate MLSA' },
+      { icon: '<i class="fas fa-magic"></i>', color: '#A96412', title: 'Exploring Generative AI with Azure AI Studio', desc: 'Introduced Azure AI Studio — covering the model catalog, prompt flow, fine-tuning options, and how to deploy generative AI applications at enterprise scale.', venue: 'SMIU · Associate MLSA' },
+      { icon: '<i class="fas fa-flask"></i>', color: '#0E7490', title: 'Build, Train & Deploy With Azure Machine Learning Studio', desc: 'Led a hands-on session on Azure ML Studio covering dataset preparation, pipeline-based model training, experiment tracking, and deploying models to real-time endpoints.', venue: 'SMIU · Associate MLSA' }
     ];
 
     /* ─── Horizontal Slider Class ─────────────────────────────── */
@@ -1883,7 +1636,7 @@ RESPONSE RULES:
         this.track.addEventListener('scroll', () => this._syncDots(), { passive: true });
       }
       _cardStep() {
-        const first = this.track.querySelector('[data-slide]');
+        const first = this.track.querySelector('[data-slide]') || this.track.firstElementChild;
         return first ? first.offsetWidth + 24 : 304;
       }
       _bindArrows() {
@@ -1908,7 +1661,75 @@ RESPONSE RULES:
         d.addEventListener('click', () => this.track.scrollTo({ left: idx * (slideEl.offsetWidth + 24), behavior: 'smooth' }));
         this.dots.appendChild(d);
       }
+
+      /* Build dots from slides already in the DOM (skills / projects,
+         which are hand-written markup rather than JS-rendered). */
+      buildDots(selector) {
+        if (!this.dots) return;
+        this.dots.innerHTML = '';
+        const slides = [...this.track.querySelectorAll(selector)]
+          .filter(el => el.style.display !== 'none');
+        slides.forEach((el, i) => this.addDot(i, el));
+      }
+
+      /* Slow continuous drift. Ping-pongs at the ends rather than
+         snapping back, and yields to the visitor: any hover, focus,
+         drag, touch or hidden tab pauses it. Off entirely when the
+         visitor asks for reduced motion. */
+      autoScroll(speed = 0.35) {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+        this._dir = 1;
+        this._paused = false;
+        let raf = null;
+
+        // Track the position as a float ourselves: scrollLeft rounds, so
+        // reading it back each frame would swallow a sub-pixel step and
+        // the drift would never advance.
+        let pos = this.track.scrollLeft;
+        const step = () => {
+          const max = this.track.scrollWidth - this.track.clientWidth;
+          if (!this._paused && max > 4) {
+            pos += speed * this._dir;
+            if (pos >= max) { pos = max; this._dir = -1; }
+            else if (pos <= 0) { pos = 0; this._dir = 1; }
+            this.track.scrollLeft = pos;
+          } else if (this._paused) {
+            pos = this.track.scrollLeft;   // resync after a drag or arrow
+          }
+          raf = requestAnimationFrame(step);
+        };
+
+        const start = () => { if (!raf && !reduce.matches) raf = requestAnimationFrame(step); };
+        const stop = () => { if (raf) { cancelAnimationFrame(raf); raf = null; } };
+
+        const pause = () => { this._paused = true; };
+        const resume = () => { this._paused = false; };
+        ['pointerenter', 'pointerdown', 'focusin'].forEach(e => this.track.addEventListener(e, pause));
+        ['pointerleave', 'pointerup', 'focusout'].forEach(e => this.track.addEventListener(e, resume));
+        this.track.addEventListener('touchstart', pause, { passive: true });
+        this.track.addEventListener('touchend', resume, { passive: true });
+        document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+        reduce.addEventListener('change', () => reduce.matches ? stop() : start());
+
+        // only drift while the section is actually on screen
+        new IntersectionObserver(([e]) => e.isIntersecting ? start() : stop(),
+          { threshold: 0.05 }).observe(this.track);
+        return this;
+      }
     }
+
+    /* ─── Skills & Projects sliders ──────────────────────────── */
+    let projectSlider = null;
+    document.addEventListener('DOMContentLoaded', () => {
+      const info = new HorizontalSlider('infoTrack', 'infoDots');
+      if (info.track) { info.buildDots('.info-item'); info.autoScroll(0.3); }
+
+      const skills = new HorizontalSlider('skillTrack', 'skillDots', 'skillPrev', 'skillNext');
+      if (skills.track) { skills.buildDots('.skill-category'); skills.autoScroll(0.3); }
+
+      projectSlider = new HorizontalSlider('projectsGrid', 'projDots', 'projPrev', 'projNext');
+      if (projectSlider.track) { projectSlider.buildDots('.project-card'); projectSlider.autoScroll(0.35); }
+    });
 
     /* ─── Lightbox ───────────────────────────────────────────── */
     let _lbIdx = 0;
@@ -1945,7 +1766,7 @@ RESPONSE RULES:
     function renderCerts() {
       const track = document.getElementById('certTrack');
       if (!track) return;
-      const slider = new HorizontalSlider('certTrack', 'certDots', 'certPrev', 'certNext');
+      const slider = new HorizontalSlider('certTrack', 'certDots', 'certPrev', 'certNext').autoScroll(0.3);
       CERT_DATA.forEach((c, i) => {
         const el = document.createElement('div');
         el.className = 'cert-slide';
@@ -1971,7 +1792,7 @@ RESPONSE RULES:
     function renderSessions() {
       const track = document.getElementById('sessionTrack');
       if (!track) return;
-      const slider = new HorizontalSlider('sessionTrack', 'sessionDots', 'sessionPrev', 'sessionNext');
+      const slider = new HorizontalSlider('sessionTrack', 'sessionDots', 'sessionPrev', 'sessionNext').autoScroll(0.3);
       SESSION_DATA.forEach((s, i) => {
         const el = document.createElement('div');
         el.className = 'session-slide';
@@ -2047,6 +1868,99 @@ RESPONSE RULES:
         document.getElementById('chatInput').focus();
       }
     }
+
+    /* ─── 3D pointer parallax ─────────────────
+       Writes only CSS custom properties, never element.style.transform —
+       the transform declarations in style.css compose reveal, hover and
+       tilt from independent variables, so nothing fights the cascade.   */
+    (function () {
+      const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const stage = document.getElementById('heroStage');
+      const inner = document.getElementById('stageInner');
+      const cards = Array.from(document.querySelectorAll('.project-card'));
+
+      let heroRaf = null, hx = 0, hy = 0, tx = 0, ty = 0;
+
+      function heroTick() {
+        hx += (tx - hx) * 0.10;
+        hy += (ty - hy) * 0.10;
+        inner.style.setProperty('--rx', hx.toFixed(2) + 'deg');
+        inner.style.setProperty('--ry', hy.toFixed(2) + 'deg');
+        heroRaf = (Math.abs(tx - hx) > 0.01 || Math.abs(ty - hy) > 0.01)
+          ? requestAnimationFrame(heroTick) : null;
+      }
+
+      function onHeroMove(e) {
+        if (e.pointerType !== 'mouse') return;
+        const r = stage.getBoundingClientRect();
+        ty = (((e.clientX - r.left) / r.width) - 0.5) * 14;
+        tx = (((e.clientY - r.top) / r.height) - 0.5) * -10;
+        if (!heroRaf) heroRaf = requestAnimationFrame(heroTick);
+      }
+
+      function onHeroLeave() {
+        tx = 0; ty = 0;
+        if (!heroRaf) heroRaf = requestAnimationFrame(heroTick);
+      }
+
+      /* Rects are cached on enter — calling getBoundingClientRect() inside
+         pointermove would thrash layout across 18 cards every frame. */
+      function bindCard(card) {
+        let rect = null;
+        card.addEventListener('pointerenter', e => {
+          if (e.pointerType !== 'mouse') return;
+          rect = card.getBoundingClientRect();
+          card.classList.add('is-tilting');
+        });
+        card.addEventListener('pointermove', e => {
+          if (e.pointerType !== 'mouse' || !rect) return;
+          const ry = (((e.clientX - rect.left) / rect.width) - 0.5) * 9;
+          const rx = (((e.clientY - rect.top) / rect.height) - 0.5) * -7;
+          card.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+          card.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+        });
+        card.addEventListener('pointerleave', () => {
+          rect = null;
+          card.classList.remove('is-tilting');
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+        });
+      }
+
+      let bound = false;
+      function enable() {
+        if (bound || !fine.matches || reduce.matches) return;
+        bound = true;
+        if (stage && inner) {
+          stage.addEventListener('pointermove', onHeroMove);
+          stage.addEventListener('pointerleave', onHeroLeave);
+        }
+        cards.forEach(bindCard);
+      }
+
+      function disable() {
+        if (!bound) return;
+        bound = false;
+        if (stage && inner) {
+          stage.removeEventListener('pointermove', onHeroMove);
+          stage.removeEventListener('pointerleave', onHeroLeave);
+          inner.style.removeProperty('--rx');
+          inner.style.removeProperty('--ry');
+        }
+        cards.forEach(c => {
+          c.classList.remove('is-tilting');
+          c.style.removeProperty('--rx');
+          c.style.removeProperty('--ry');
+        });
+      }
+
+      enable();
+      reduce.addEventListener('change', () => reduce.matches ? disable() : enable());
+      fine.addEventListener('change', () => fine.matches ? enable() : disable());
+    })();
+
   </script>
 
 </body>

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+*.log
+.env
+
+# Source assets kept locally, not shipped
+img/photo-portrait.jpeg
+img/photo-portrait1.webp

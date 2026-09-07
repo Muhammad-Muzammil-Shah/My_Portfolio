@@ -1,10 +1,20 @@
 import os
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, abort
 from flask_cors import CORS
+from dotenv import load_dotenv
 import requests
 
-app = Flask(__name__, static_folder='.', static_url_path='')
+load_dotenv()
+
+app = Flask(__name__, static_folder=None)
 CORS(app)
+
+# Only these file types are served from the project root - keeps app.py,
+# requirements.txt, .git, .venv, logs, etc. off the public web server.
+ALLOWED_STATIC_EXTENSIONS = {
+    '.html', '.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg',
+    '.webp', '.ico', '.pdf', '.woff', '.woff2', '.ttf', '.json'
+}
 
 @app.route('/')
 def home():
@@ -12,6 +22,9 @@ def home():
 
 @app.route('/<path:path>')
 def serve_static(path):
+    ext = os.path.splitext(path)[1].lower()
+    if ext not in ALLOWED_STATIC_EXTENSIONS:
+        abort(404)
     return send_from_directory('.', path)
 
 @app.route('/api/chat', methods=['POST', 'OPTIONS'])
@@ -50,10 +63,6 @@ def chat():
         return response.json(), response.status_code
     except requests.exceptions.RequestException as e:
         return jsonify({'error': {'message': f'Failed to connect to Groq API: {str(e)}'}}), 502
-
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
     app.run()

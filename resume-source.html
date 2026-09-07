@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>M. Muzammil Shah — Resume</title>
+<style>
+  /* ATS: single column, real selectable text, standard section headings,
+     no tables, no text boxes, no information carried in images. */
+  @page { size: A4; margin: 9mm 11mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 9.1pt; line-height: 1.2; color: #1a1a1a; margin: 0;
+  }
+
+  h1 { font-size: 17pt; letter-spacing: .4px; margin: 0; text-transform: uppercase; }
+  .tagline { font-size: 10pt; font-weight: bold; color: #0B5CAD; margin: 1px 0 3px; }
+  .contact { font-size: 9pt; color: #333; }
+
+  h2 {
+    font-size: 9.6pt; text-transform: uppercase; letter-spacing: .9px;
+    border-bottom: 1.2px solid #444; padding-bottom: 2px;
+    margin: 7px 0 4px;
+  }
+
+  /* Role line: title + employer left, dates hard right. Dates run down a
+     single edge so they can be scanned in one pass. */
+  .entry { margin-bottom: 5px; }
+  .row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  }
+  .what { font-weight: bold; font-size: 9.9pt; }
+  .what .org { font-weight: normal; }
+  .when { font-size: 9pt; color: #333; white-space: nowrap; }
+  .tag { font-size: 8.4pt; color: #555; margin: 0 0 1px; }
+
+  ul { margin: 2px 0 0; padding-left: 14px; }
+  li { margin-bottom: 1px; }
+
+  .line { margin-bottom: 2px; }
+  .skills .row2 { display: flex; gap: 8px; margin-bottom: 2px; }
+  .skills b { flex: 0 0 72px; }
+  p { margin: 0 0 4px; }
+  .certs { font-size: 9pt; margin: 0; }
+  .proj { margin-bottom: 2.5px; }
+  .proj i { color: #555; font-style: normal; font-size: 8.6pt; }
+</style>
+</head>
+<body>
+
+<h1>M. Muzammil Shah</h1>
+<div class="tagline">Power Platform Consultant &nbsp;·&nbsp; AI Engineer &nbsp;·&nbsp; Founder</div>
+<div class="contact">
+  Karachi, Pakistan &nbsp;|&nbsp; +92 330 235 8711 &nbsp;|&nbsp; syedmmuzammil42101@gmail.com &nbsp;|&nbsp;
+  linkedin.com/in/syedmuhammadmuzammil077 &nbsp;|&nbsp; github.com/Muhammad-Muzammil-Shah &nbsp;|&nbsp; jobvibeai.com
+</div>
+
+<h2>Summary</h2>
+<p>Microsoft Certified Azure AI Apps and Agents Developer (Associate), building Copilot Studio agents and Power
+Platform automation for an Australian consultancy. Founder of JobVibe AI, an AI recruitment platform. Teach AI
+part-time at Bano Qabil, and have delivered 7 technical sessions on Azure AI to 100+ students as a Microsoft Learn
+Student Ambassador. I work the whole path from a business problem to a deployed agent, and drop into Python and
+LangChain when the low-code route runs out.</p>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <div class="row2"><b>Microsoft</b><span>Copilot Studio, Power Automate, Power Apps, Dataverse, Power Pages, Azure AI Foundry, Azure Machine Learning Studio, Azure Web Services</span></div>
+  <div class="row2"><b>AI &amp; ML</b><span>Python, LangChain, RAG pipelines, LLMs (Groq, GPT), prompt engineering, NLP, semantic search, OpenCV, YOLOv11</span></div>
+  <div class="row2"><b>Automation</b><span>n8n, VectorShift, Supabase (vector), Twilio, Flask, Server-Sent Events, REST APIs</span></div>
+  <div class="row2"><b>Data</b><span>SQL, Pandas, NumPy, scikit-learn, Matplotlib, Power BI, ETL pipelines</span></div>
+</div>
+
+<h2>Experience</h2>
+
+<div class="entry">
+  <div class="row">
+    <span class="what">Power Platform Consultant <span class="org">· 1Dynamics PTY LTD — Australia (Remote)</span></span>
+    <span class="when">Feb 2026 – Present</span>
+  </div>
+  <div class="tag">Full-time</div>
+  <ul>
+    <li>Build and ship Copilot Studio agents with multi-topic routing and Adaptive Cards, deployed to Microsoft Teams for internal business users.</li>
+    <li>Automate recurring business processes with Power Automate and Dataverse, removing manual handoffs between teams.</li>
+    <li>Run scheduled jobs and cloud workflows on Azure Web Services, Azure AI Foundry and Azure Machine Learning Studio, with monitoring and SLA tracking.</li>
+    <li>Test agents end to end before release — topic triggers, fallbacks, response accuracy — and iterate on what fails.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="what">Founder <span class="org">· JobVibe AI — jobvibeai.com</span></span>
+    <span class="when">Jan 2026 – Present</span>
+  </div>
+  <ul>
+    <li>Built and launched an AI recruitment platform that screens CVs, generates interview questions from a job description and runs scored real-time interviews.</li>
+    <li>Designed the scoring model across communication, confidence, reasoning and knowledge, producing percentile reports so candidates are compared on evidence.</li>
+    <li>Own the product end to end: architecture, LLM pipeline, evaluation logic and the hiring workflow it replaces.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="what">AI Instructor <span class="org">· Bano Qabil — Alkhidmat Foundation Pakistan</span></span>
+    <span class="when">Sep 2026 – Present</span>
+  </div>
+  <div class="tag">Part-time</div>
+  <ul>
+    <li>Teach Artificial Intelligence on a free IT education programme running across Karachi campuses.</li>
+    <li>Deliver hands-on modules in Python, machine learning, NLP and generative AI agents, taking students from fundamentals to a working project.</li>
+    <li>Mentor students through code review and preparation for their first technical roles.</li>
+  </ul>
+</div>
+
+<h2>Projects</h2>
+
+<div class="proj"><b>AI Knowledge Base Copilot</b> — RAG assistant for enterprise Q&amp;A: Azure AI Search embeddings and Blob Storage feeding a Copilot Studio agent, with semantic search across large document sets. <i>Azure AI Search · Copilot Studio · Blob Storage</i></div>
+
+<div class="proj"><b>Copilot Studio Agent</b> (Microsoft Agent Academy) — Declarative agent with topics, triggers, Adaptive Cards and agent flows, published to Microsoft Teams and M365 Copilot for live users. <i>Copilot Studio · Power Automate · Teams</i></div>
+
+<div class="proj"><b>CallBotX — Real-time Voice AI Agent</b> — Voice assistant chaining speech-to-text, RAG retrieval, LLM generation and spoken response, streamed over Server-Sent Events. <i>Flask · Groq · RAG · STT/TTS</i></div>
+
+<div class="proj"><b>Azure AI Studio Multi-Modal Generator</b> — Content generation system combining text, image and speech on Azure AI Studio with Azure Cognitive Services. <i>Azure AI Studio · Cognitive Services · Python</i></div>
+
+<div class="proj"><b>n8n Automation Suite</b> — RAG research assistant (n8n + Supabase vector + Azure embeddings) and a WhatsApp customer support bot handling live queries. <i>n8n · Supabase · Twilio · Groq</i></div>
+
+<h2>Education &amp; Training</h2>
+
+<div class="line row">
+  <span class="what">BS in Artificial Intelligence <span class="org">· Sindh Madressatul Islam University, Karachi</span></span>
+  <span class="when">2022 – 2026</span>
+</div>
+<div class="line row">
+  <span class="what">Certified Data Scientist &amp; Certified Database Administrator <span class="org">· NED University (PITP)</span></span>
+  <span class="when">2025</span>
+</div>
+<div class="line row">
+  <span class="what">Generative AI Fellowship <span class="org">· Buildable — 3-month programme</span></span>
+  <span class="when">Aug – Nov 2025</span>
+</div>
+<div class="line row">
+  <span class="what">Data Science Fellowship <span class="org">· Bytewise Limited — 3-month programme</span></span>
+  <span class="when">Jun – Sep 2024</span>
+</div>
+
+<h2>Certifications</h2>
+<p class="certs"><b>Microsoft Certified: Azure AI Apps and Agents Developer Associate</b> (Aug 2026) &nbsp;·&nbsp;
+<b>Microsoft Certified: Azure AI Fundamentals, AI-900</b> (2024) &nbsp;·&nbsp;
+Machine Learning Specialization, Stanford/Coursera (2024) &nbsp;·&nbsp;
+Data Analytics &amp; BI, DigiSkills (2024) &nbsp;·&nbsp;
+NLP with Python, LinkedIn Learning (2024) &nbsp;·&nbsp;
+Crash Course on Python, Google/Coursera (2023)</p>
+
+<h2>Community &amp; Speaking</h2>
+<div class="entry">
+  <div class="row">
+    <span class="what">Microsoft Learn Student Ambassador, Associate <span class="org">· SMIU Campus Lead</span></span>
+    <span class="when">Sep 2024 – Present</span>
+  </div>
+  <ul>
+    <li>Delivered 7 technical sessions on Azure Machine Learning Studio, generative AI, RAG systems and Azure OpenAI, reaching 100+ students.</li>
+    <li>Mentored 50+ students on AI fundamentals and Microsoft ecosystem career paths.</li>
+  </ul>
+</div>
+
+</body>
+</html>
